@@ -450,6 +450,11 @@ body.is-ready .hero-anim {
 .footer-phone { display: flex; align-items: center; gap: 8px; font-weight: 600; }
 .footer-phone svg { width: 18px; height: 18px; color: var(--red-hi); }
 .footer p { color: #6c6f77; font-size: .85rem; width: 100%; text-align: center; padding-top: 26px; border-top: 1px solid var(--border); }
+.footer .credits { padding-top: 0; border-top: 0; margin-top: -12px; font-size: .8rem; }
+.credits a { position: relative; color: #a9acb3; font-weight: 600; transition: color .3s; }
+.credits a::after { content: ""; position: absolute; left: 0; right: 0; bottom: -2px; height: 1px; background: var(--red-hi); transform: scaleX(0); transform-origin: right; transition: transform .4s var(--ease); }
+.credits a:hover { color: #fff; }
+.credits a:hover::after { transform: scaleX(1); transform-origin: left; }
 
 /* ---------- Botones flotantes ---------- */
 .fab-whatsapp {
@@ -553,6 +558,7 @@ body.is-ready .hero-anim {
   .cta { padding-bottom: 90px; }
   .cta-inner { padding: 60px 22px; }
   .cta-actions .btn { width: 100%; }
+  .footer { padding-bottom: 160px; }
   .footer-inner { flex-direction: column; text-align: center; }
   .footer-links { justify-content: center; }
 }
