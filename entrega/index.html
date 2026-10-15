@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Entrega del proyecto | Casanova Car Care LLC</title>
+  <meta name="description" content="Documento de entrega del sitio web de Casanova Car Care LLC.">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#07080a">
+  <link rel="icon" type="image/png" href="../assets/favicon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --red: #e10600;
+      --red-hi: #ff2a2a;
+      --red-deep: #7a0000;
+      --bg: #07080a;
+      --bg-2: #0d0e11;
+      --surface: #131418;
+      --surface-2: #1a1b20;
+      --border: #23252b;
+      --text: #ececee;
+      --muted: #9a9ca3;
+      --green: #2ecc71;
+      --chrome: linear-gradient(180deg, #fff 0%, #e4e6ea 40%, #9298a2 52%, #d7dade 70%, #fff 100%);
+      --red-grad: linear-gradient(135deg, var(--red-hi), var(--red) 50%, #a30000);
+      --ease: cubic-bezier(.22, 1, .36, 1);
+      --font-head: "Barlow Condensed", "Arial Narrow", sans-serif;
+      --font-body: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; overflow-x: clip; }
+    body { font-family: var(--font-body); background: var(--bg); color: var(--text); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+    a { color: inherit; }
+    img, svg { display: block; }
+    ul { list-style: none; }
+    h1, h2, h3 { font-family: var(--font-head); text-transform: uppercase; letter-spacing: .5px; line-height: 1.05; }
+    code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: .88em; background: rgba(255, 255, 255, .06); border: 1px solid var(--border); padding: 1px 6px; border-radius: 6px; color: #fff; word-break: break-word; }
+    .wrap { max-width: 980px; margin: 0 auto; padding: 0 20px; }
+    .chrome { background: var(--chrome); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+    .accent { color: var(--red-hi); }
+
+    /* ---------- Portada ---------- */
+    .cover {
+      position: relative; overflow: hidden;
+      padding: 72px 0 64px;
+      background: radial-gradient(ellipse 70% 80% at 85% 20%, #1d0405, transparent 60%), var(--bg);
+      border-bottom: 1px solid var(--border);
+    }
+    .cover::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 1px; background: linear-gradient(90deg, transparent, var(--red-hi), transparent); }
+    .cover-grid { display: grid; grid-template-columns: 1fr auto; gap: 40px; align-items: center; }
+    .cover-logo { width: 190px; height: auto; filter: drop-shadow(0 20px 40px rgba(225, 6, 0, .35)); animation: float 6s ease-in-out infinite; }
+    .tag { display: inline-flex; align-items: center; gap: 8px; padding: 6px 14px; border-radius: 999px; border: 1px solid rgba(255, 42, 42, .35); background: rgba(225, 6, 0, .1); color: var(--red-hi); font-size: .78rem; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 18px; }
+    .cover h1 { font-size: clamp(2.6rem, 7vw, 4.6rem); font-weight: 800; margin-bottom: 14px; }
+    .cover p { color: var(--muted); max-width: 560px; }
+    .meta { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 36px; }
+    .meta div { padding: 14px 16px; border-radius: 12px; background: rgba(255, 255, 255, .03); border: 1px solid var(--border); }
+    .meta span { display: block; font-size: .72rem; letter-spacing: 1.5px; text-transform: uppercase; color: var(--muted); }
+    .meta strong { font-weight: 600; font-size: .95rem; }
+    .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
+    .btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 22px; border-radius: 999px; font: 600 .9rem var(--font-body); text-decoration: none; border: 2px solid transparent; cursor: pointer; transition: transform .3s var(--ease), box-shadow .3s, background .3s, border-color .3s; }
+    .btn svg { width: 17px; height: 17px; }
+    .btn-primary { background: var(--red-grad); color: #fff; box-shadow: 0 10px 28px -10px var(--red-hi); }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 14px 34px -10px var(--red-hi); }
+    .btn-ghost { background: rgba(255, 255, 255, .03); color: #fff; border-color: rgba(255, 255, 255, .2); }
+    .btn-ghost:hover { border-color: var(--red-hi); }
+
+    /* ---------- Índice ---------- */
+    .toc { position: sticky; top: 0; z-index: 10; background: rgba(7, 8, 10, .85); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); }
+    .toc .wrap { display: flex; gap: 6px; overflow-x: auto; padding-top: 10px; padding-bottom: 10px; scrollbar-width: none; }
+    .toc .wrap::-webkit-scrollbar { display: none; }
+    .toc a { flex: none; padding: 7px 14px; border-radius: 999px; font-size: .85rem; color: var(--muted); text-decoration: none; transition: color .3s, background .3s; }
+    .toc a:hover, .toc a.is-active { color: #fff; background: rgba(225, 6, 0, .18); }
+
+    /* ---------- Secciones ---------- */
+    section { padding: 64px 0; border-bottom: 1px solid var(--border); scroll-margin-top: 56px; }
+    .sec-head { display: flex; align-items: baseline; gap: 16px; margin-bottom: 28px; }
+    .sec-num { font: 800 1rem var(--font-head); color: var(--red-hi); letter-spacing: 2px; }
+    .sec-head h2 { font-size: clamp(1.9rem, 4.5vw, 2.6rem); font-weight: 800; }
+    .lead { color: var(--muted); margin: -12px 0 28px; max-width: 720px; }
+
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
+    .card { position: relative; padding: 24px; border-radius: 16px; background: linear-gradient(180deg, var(--surface-2), var(--surface)); border: 1px solid var(--border); transition: border-color .4s, transform .4s var(--ease); }
+    .card:hover { border-color: rgba(255, 42, 42, .4); transform: translateY(-3px); }
+    .card-icon { width: 46px; height: 46px; border-radius: 12px; display: grid; place-items: center; background: rgba(225, 6, 0, .12); border: 1px solid rgba(255, 42, 42, .2); color: var(--red-hi); margin-bottom: 16px; }
+    .card-icon svg { width: 22px; height: 22px; }
+    .card h3 { font-size: 1.35rem; margin-bottom: 10px; }
+    .card p { color: var(--muted); font-size: .92rem; }
+    .list li { position: relative; padding: 5px 0 5px 24px; font-size: .92rem; color: #cfd1d6; }
+    .list li::before { content: ""; position: absolute; left: 2px; top: 12px; width: 12px; height: 7px; border-left: 2px solid var(--red-hi); border-bottom: 2px solid var(--red-hi); transform: rotate(-45deg); }
+
+    /* Tabla */
+    .table { width: 100%; border-collapse: separate; border-spacing: 0; border: 1px solid var(--border); border-radius: 14px; overflow: hidden; font-size: .92rem; }
+    .table th, .table td { text-align: left; padding: 14px 18px; border-bottom: 1px solid var(--border); vertical-align: top; }
+    .table tr:last-child th, .table tr:last-child td { border-bottom: 0; }
+    .table th { width: 34%; font-weight: 600; color: var(--muted); background: rgba(255, 255, 255, .02); }
+    .table thead th { font: 700 .95rem var(--font-head); letter-spacing: 1.5px; text-transform: uppercase; color: #fff; background: rgba(225, 6, 0, .12); width: auto; }
+    .table-scroll { overflow-x: auto; }
+    .table-scroll .table { min-width: 560px; }
+
+    /* Checklist */
+    .checklist { display: grid; gap: 10px; }
+    .check { display: flex; align-items: flex-start; gap: 14px; padding: 16px 18px; border-radius: 14px; background: var(--surface); border: 1px solid var(--border); }
+    .check-box { flex: none; width: 24px; height: 24px; border-radius: 7px; display: grid; place-items: center; margin-top: 1px; }
+    .check-box svg { width: 15px; height: 15px; }
+    .check.done .check-box { background: rgba(46, 204, 113, .15); color: var(--green); border: 1px solid rgba(46, 204, 113, .4); }
+    .check.todo .check-box { border: 1.5px dashed var(--red-hi); color: var(--red-hi); }
+    .check strong { display: block; font-weight: 600; }
+    .check span { color: var(--muted); font-size: .88rem; }
+    .pill { display: inline-block; margin-left: 6px; padding: 1px 9px; border-radius: 999px; font-size: .7rem; font-weight: 600; letter-spacing: .5px; text-transform: uppercase; vertical-align: 2px; }
+    .pill-done { background: rgba(46, 204, 113, .15); color: var(--green); }
+    .pill-todo { background: rgba(225, 6, 0, .15); color: var(--red-hi); }
+
+    /* Pasos */
+    .steps { counter-reset: s; display: grid; gap: 12px; list-style: none; }
+    .steps li { counter-increment: s; position: relative; padding: 16px 18px 16px 62px; border-radius: 14px; background: var(--surface); border: 1px solid var(--border); font-size: .92rem; color: #cfd1d6; }
+    .steps li::before { content: counter(s); position: absolute; left: 16px; top: 14px; width: 30px; height: 30px; border-radius: 50%; display: grid; place-items: center; background: var(--red-grad); color: #fff; font: 800 1rem var(--font-head); }
+    .steps strong { color: #fff; }
+
+    .note { margin-top: 20px; padding: 16px 18px; border-radius: 14px; border-left: 3px solid var(--red-hi); background: rgba(225, 6, 0, .07); font-size: .9rem; color: #d6d8dc; }
+
+    /* Firma */
+    .sign { padding: 64px 0 80px; text-align: center; }
+    .sign img { width: 90px; margin: 0 auto 18px; }
+    .sign h2 { font-size: 2rem; margin-bottom: 8px; }
+    .sign p { color: var(--muted); font-size: .92rem; }
+    .credits { margin-top: 22px; font-size: .88rem; color: var(--muted); }
+    .credits a { color: #fff; font-weight: 600; text-decoration: none; border-bottom: 1px solid var(--red-hi); }
+    .credits a:hover { color: var(--red-hi); }
+
+    /* Animación de aparición */
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity .8s var(--ease), transform .8s var(--ease); }
+    .reveal.is-visible { opacity: 1; transform: none; }
+    @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+
+    @media (max-width: 700px) {
+      .cover { padding: 48px 0; }
+      .cover-grid { grid-template-columns: 1fr; text-align: center; }
+      .meta { grid-template-columns: 1fr 1fr; text-align: left; }
+      .cover-logo { width: 150px; margin: 0 auto; order: -1; }
+      .cover p { margin: 0 auto; }
+      .actions { justify-content: center; }
+      .table th { width: 40%; }
+      .table th, .table td { padding: 12px 14px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation: none !important; transition: none !important; }
+      .reveal { opacity: 1; transform: none; }
+    }
+
+    /* Versión para imprimir / guardar como PDF */
+    @media print {
+      :root { --bg: #fff; --bg-2: #fff; --surface: #fff; --surface-2: #fff; --border: #d9d9de; --text: #111; --muted: #555; }
+      body { background: #fff; color: #111; }
+      .toc, .actions, .no-print { display: none !important; }
+      .cover { background: #fff; padding: 24px 0; }
+      .chrome { -webkit-text-fill-color: #111; background: none; }
+      .card, .check, .steps li { break-inside: avoid; background: #fff; }
+      .list li { color: #222; }
+      .steps li { color: #222; }
+      .steps strong, .credits a, code { color: #111; }
+      code { background: #f3f3f5; }
+      .reveal { opacity: 1 !important; transform: none !important; }
+      .cover-logo { animation: none; filter: none; }
+      section { padding: 28px 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+      <symbol id="i-check" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" d="M5 12.5l4.5 4.5L19 7.5"/></symbol>
+      <symbol id="i-dot" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3" fill="currentColor"/></symbol>
+      <symbol id="i-ext" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></symbol>
+      <symbol id="i-print" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M6 9V3h12v6M6 18H4v-7h16v7h-2"/><path d="M6 14h12v7H6z"/></g></symbol>
+      <symbol id="i-design" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><circle cx="8" cy="10" r="1.3"/><circle cx="12" cy="7.5" r="1.3"/><circle cx="16" cy="10" r="1.3"/><path d="M12 21c-1.5 0-2-1-2-2s1-2 2-2h2a4 4 0 0 0 4-4"/></g></symbol>
+      <symbol id="i-image" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="M21 16l-5-5-9 9"/></g></symbol>
+      <symbol id="i-layers" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M12 3l9 5-9 5-9-5z"/><path d="M3 13l9 5 9-5"/></g></symbol>
+      <symbol id="i-motion" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 12h9M4 7h5M4 17h6"/><circle cx="17" cy="12" r="4"/></g></symbol>
+      <symbol id="i-chat" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" d="M4 5h16v11H9l-5 4z"/></symbol>
+      <symbol id="i-phone" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><rect x="7" y="2.5" width="10" height="19" rx="2"/><path d="M11 18.5h2"/></g></symbol>
+      <symbol id="i-search" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4.5 4.5"/></g></symbol>
+      <symbol id="i-bolt" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" d="M13 2L4 14h7l-1 8 9-12h-7z"/></symbol>
+      <symbol id="i-globe" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.5 3.8 5.5 3.8 9s-1.3 6.5-3.8 9c-2.5-2.5-3.8-5.5-3.8-9S9.5 5.5 12 3z"/></g></symbol>
+    </defs>
+  </svg>
+
+  <!-- ===== Portada ===== -->
+  <header class="cover">
+    <div class="wrap cover-grid">
+      <div>
+        <span class="tag">Entrega de proyecto</span>
+        <h1><span class="chrome">Sitio web</span><br><span class="accent">Casanova Car Care</span></h1>
+        <p>Resumen de todo lo que incluye el sitio web entregado a Casanova Car Care LLC: diseño, funciones, publicación, dominio y cómo mantenerlo.</p>
+
+        <div class="meta">
+          <div><span>Cliente</span><strong>Casanova Car Care LLC</strong></div>
+          <div><span>Dominio</span><strong>casanovacarcare.com</strong></div>
+          <div><span>Fecha de entrega</span><strong>15 de octubre de 2026</strong></div>
+          <div><span>Tipo</span><strong>Landing page</strong></div>
+        </div>
+
+        <div class="actions">
+          <a class="btn btn-primary" href="https://casanovacarcare.com" target="_blank" rel="noopener">Ver el sitio <svg><use href="#i-ext"/></svg></a>
+          <button class="btn btn-ghost" type="button" onclick="window.print()"><svg><use href="#i-print"/></svg> Imprimir / Guardar PDF</button>
+        </div>
+      </div>
+      <img class="cover-logo" src="../assets/logo.webp" alt="Logo de Casanova Car Care LLC" width="720" height="746">
+    </div>
+  </header>
+
+  <!-- ===== Índice ===== -->
+  <nav class="toc" aria-label="Contenido">
+    <div class="wrap">
+      <a href="#incluye">Qué incluye</a>
+      <a href="#secciones">Secciones</a>
+      <a href="#tecnico">Ficha técnica</a>
+      <a href="#dominio">Dominio</a>
+      <a href="#editar">Cómo editar</a>
+      <a href="#checklist">Checklist</a>
+    </div>
+  </nav>
+
+  <main>
+    <!-- ===== 01 Qué incluye ===== -->
+    <section id="incluye">
+      <div class="wrap">
+        <div class="sec-head reveal"><span class="sec-num">01</span><h2>Qué incluye</h2></div>
+        <p class="lead reveal">Todo lo que forma parte del proyecto entregado.</p>
+
+        <div class="grid">
+          <article class="card reveal">
+            <div class="card-icon"><svg><use href="#i-design"/></svg></div>
+            <h3>Diseño a medida</h3>
+            <ul class="list">
+              <li>Identidad visual rojo, negro y cromado tomada del logo</li>
+              <li>Tipografías Barlow Condensed e Inter</li>
+              <li>Títulos con efecto cromado y detalles en rojo</li>
+              <li>Íconos propios para cada servicio</li>
+            </ul>
+          </article>
+
+          <article class="card reveal">
+            <div class="card-icon"><svg><use href="#i-image"/></svg></div>
+            <h3>Logo optimizado</h3>
+            <ul class="list">
+              <li>Fondo eliminado para que el escudo se vea limpio</li>
+              <li>Versiones ligeras en formato WebP (grande y pequeña)</li>
+              <li>Ícono de pestaña del navegador (favicon)</li>
+              <li>Ícono para la pantalla de inicio del iPhone</li>
+            </ul>
+          </article>
+
+          <article class="card reveal">
+            <div class="card-icon"><svg><use href="#i-motion"/></svg></div>
+            <h3>Animaciones</h3>
+            <ul class="list">
+              <li>Pantalla de carga con el logo</li>
+              <li>Logo con anillo giratorio, resplandor y destello de luz</li>
+              <li>Tacómetro con aguja animada</li>
+              <li>Apariciones suaves al bajar por la página</li>
+              <li>Tarjetas con efecto 3D al pasar el mouse</li>
+            </ul>
+          </article>
+
+          <article class="card reveal">
+            <div class="card-icon"><svg><use href="#i-chat"/></svg></div>
+            <h3>Contacto por WhatsApp</h3>
+            <ul class="list">
+              <li>Formulario de cita que arma el mensaje y abre WhatsApp</li>
+              <li>Botón "Cotizar" en cada servicio con el servicio ya escrito</li>
+              <li>Botón flotante de WhatsApp en toda la página</li>
+              <li>Botones para llamar directo al +1 (913) 967-2528</li>
+            </ul>
+          </article>
+
+          <article class="card reveal">
+            <div class="card-icon"><svg><use href="#i-phone"/></svg></div>
+            <h3>Adaptado a celular</h3>
+            <ul class="list">
+              <li>Se ajusta a teléfonos, tabletas y computadoras</li>
+              <li>Menú móvil animado a pantalla completa</li>
+              <li>Botones grandes y fáciles de tocar</li>
+            </ul>
+          </article>
+
+          <article class="card reveal">
+            <div class="card-icon"><svg><use href="#i-search"/></svg></div>
+            <h3>Buscadores y redes</h3>
+            <ul class="list">
+              <li>Título y descripción para Google</li>
+              <li>Vista previa con el logo al compartir el enlace en WhatsApp y Facebook</li>
+              <li>Dirección oficial del sitio (URL canónica)</li>
+            </ul>
+          </article>
+
+          <article class="card reveal">
+            <div class="card-icon"><svg><use href="#i-bolt"/></svg></div>
+            <h3>Rendimiento y accesibilidad</h3>
+            <ul class="list">
+              <li>Sin librerías externas pesadas: carga rápida</li>
+              <li>Imágenes en formato WebP</li>
+              <li>Respeta la opción "reducir movimiento" del dispositivo</li>
+              <li>Etiquetas para lectores de pantalla en botones e íconos</li>
+            </ul>
+          </article>
+
+          <article class="card reveal">
+            <div class="card-icon"><svg><use href="#i-globe"/></svg></div>
+            <h3>Publicación</h3>
+            <ul class="list">
+              <li>Alojado en GitHub Pages, sin costo de hosting</li>
+              <li>Conectado al dominio casanovacarcare.com</li>
+              <li>Certificado de seguridad HTTPS gratuito</li>
+              <li>Código en un repositorio de GitHub con historial de cambios</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 02 Secciones ===== -->
+    <section id="secciones">
+      <div class="wrap">
+        <div class="sec-head reveal"><span class="sec-num">02</span><h2>Secciones del sitio</h2></div>
+        <div class="table-scroll reveal">
+          <table class="table">
+            <thead><tr><th>Sección</th><th>Contenido</th></tr></thead>
+            <tbody>
+              <tr><th>Menú</th><td>Logo, enlaces a cada sección, teléfono y botón "Agendar cita". Se oculta al bajar y reaparece al subir.</td></tr>
+              <tr><th>Portada</th><td>Título "Tu vehículo en manos expertas", botones de cita y llamada, puntos de confianza y el logo animado.</td></tr>
+              <tr><th>Cinta de servicios</th><td>Franja roja en movimiento con los servicios del taller.</td></tr>
+              <tr><th>Servicios</th><td>Mecánica general, Refrigeración, Frenos y Electricidad, cada uno con su lista y botón "Cotizar".</td></tr>
+              <tr><th>Nosotros</th><td>Por qué elegir el taller, con tacómetro animado y cuatro ventajas.</td></tr>
+              <tr><th>Proceso</th><td>Cuatro pasos: Agenda, Diagnóstico, Presupuesto y Entrega.</td></tr>
+              <tr><th>Llamado a la acción</th><td>Franja roja con botones de WhatsApp y llamada.</td></tr>
+              <tr><th>Contacto</th><td>Teléfono, WhatsApp, dirección, horario y formulario de cita.</td></tr>
+              <tr><th>Pie de página</th><td>Logo, enlaces, teléfono, derechos reservados y firma de desarrollo.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 03 Ficha técnica ===== -->
+    <section id="tecnico">
+      <div class="wrap">
+        <div class="sec-head reveal"><span class="sec-num">03</span><h2>Ficha técnica</h2></div>
+        <div class="reveal">
+          <table class="table">
+            <tbody>
+              <tr><th>Tecnología</th><td>HTML5, CSS3 y JavaScript, sin frameworks</td></tr>
+              <tr><th>Hosting</th><td>GitHub Pages</td></tr>
+              <tr><th>Dominio</th><td><code>casanovacarcare.com</code> (registrado en GoDaddy)</td></tr>
+              <tr><th>Repositorio</th><td><a href="https://github.com/quasarworksco/Casa-Nova-Car-Care-LLC" target="_blank" rel="noopener"><code>github.com/quasarworksco/Casa-Nova-Car-Care-LLC</code></a></td></tr>
+              <tr><th>Rama publicada</th><td><code>main</code> — cada cambio que llega a esta rama se publica solo</td></tr>
+              <tr><th>Archivos principales</th><td><code>index.html</code> contenido · <code>css/styles.css</code> diseño · <code>js/main.js</code> funciones · <code>assets/</code> logo e íconos</td></tr>
+              <tr><th>Número de contacto</th><td>+1 (913) 967-2528 (llamadas y WhatsApp)</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 04 Dominio ===== -->
+    <section id="dominio">
+      <div class="wrap">
+        <div class="sec-head reveal"><span class="sec-num">04</span><h2>Configuración del dominio</h2></div>
+        <p class="lead reveal">Registros DNS en GoDaddy para que casanovacarcare.com apunte a GitHub Pages.</p>
+        <div class="table-scroll reveal">
+          <table class="table">
+            <thead><tr><th>Tipo</th><th>Nombre</th><th>Valor</th></tr></thead>
+            <tbody>
+              <tr><td>A</td><td><code>@</code></td><td><code>185.199.108.153</code></td></tr>
+              <tr><td>A</td><td><code>@</code></td><td><code>185.199.109.153</code></td></tr>
+              <tr><td>A</td><td><code>@</code></td><td><code>185.199.110.153</code></td></tr>
+              <tr><td>A</td><td><code>@</code></td><td><code>185.199.111.153</code></td></tr>
+              <tr><td>CNAME</td><td><code>www</code></td><td><code>quasarworksco.github.io</code></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="note reveal">En GitHub: <strong>Settings → Pages</strong>, origen <code>main</code> / <code>(root)</code>, dominio personalizado <code>casanovacarcare.com</code> y la opción <strong>Enforce HTTPS</strong> activada.</p>
+      </div>
+    </section>
+
+    <!-- ===== 05 Cómo editar ===== -->
+    <section id="editar">
+      <div class="wrap">
+        <div class="sec-head reveal"><span class="sec-num">05</span><h2>Cómo hacer cambios</h2></div>
+        <ol class="steps reveal">
+          <li><strong>Teléfono y WhatsApp:</strong> se cambian en un solo lugar, el bloque <code>CONFIG</code> al inicio de <code>js/main.js</code>. Se actualizan en todo el sitio.</li>
+          <li><strong>Textos, servicios, dirección y horario:</strong> están en <code>index.html</code>, cada sección marcada con un comentario.</li>
+          <li><strong>Colores:</strong> definidos al inicio de <code>css/styles.css</code> (variables <code>--red</code>, <code>--bg</code>, etc.).</li>
+          <li><strong>Logo:</strong> reemplazar los archivos en <code>assets/</code> manteniendo los mismos nombres.</li>
+          <li><strong>Publicar:</strong> al guardar los cambios en la rama <code>main</code> del repositorio, GitHub Pages actualiza el sitio en uno o dos minutos.</li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ===== 06 Checklist ===== -->
+    <section id="checklist">
+      <div class="wrap">
+        <div class="sec-head reveal"><span class="sec-num">06</span><h2>Checklist de entrega</h2></div>
+        <div class="checklist reveal">
+          <div class="check done"><span class="check-box"><svg><use href="#i-check"/></svg></span><div><strong>Diseño y desarrollo del sitio <span class="pill pill-done">Listo</span></strong><span>Todas las secciones, animaciones y versión móvil.</span></div></div>
+          <div class="check done"><span class="check-box"><svg><use href="#i-check"/></svg></span><div><strong>Logo integrado y optimizado <span class="pill pill-done">Listo</span></strong><span>Fondo eliminado, favicon e ícono de iPhone.</span></div></div>
+          <div class="check done"><span class="check-box"><svg><use href="#i-check"/></svg></span><div><strong>Teléfono y WhatsApp conectados <span class="pill pill-done">Listo</span></strong><span>+1 (913) 967-2528 en botones, formulario y menú.</span></div></div>
+          <div class="check done"><span class="check-box"><svg><use href="#i-check"/></svg></span><div><strong>Código en GitHub, rama main <span class="pill pill-done">Listo</span></strong><span>Con archivo CNAME del dominio y vista previa para redes.</span></div></div>
+          <div class="check done"><span class="check-box"><svg><use href="#i-check"/></svg></span><div><strong>Firma de desarrollo en el pie de página <span class="pill pill-done">Listo</span></strong><span>DGP Global Group &amp; AVA Multiservices.</span></div></div>
+          <div class="check todo"><span class="check-box"><svg><use href="#i-dot"/></svg></span><div><strong>Dirección del taller <span class="pill pill-todo">Pendiente</span></strong><span>Falta reemplazar el texto de ejemplo en la sección de contacto.</span></div></div>
+          <div class="check todo"><span class="check-box"><svg><use href="#i-dot"/></svg></span><div><strong>Horario de atención <span class="pill pill-todo">Pendiente</span></strong><span>Confirmar el horario real del taller.</span></div></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===== Firma ===== -->
+  <footer class="sign">
+    <div class="wrap reveal">
+      <img src="../assets/logo-sm.webp" alt="" width="160" height="166">
+      <h2><span class="chrome">Gracias por su confianza</span></h2>
+      <p>Casanova Car Care LLC · casanovacarcare.com</p>
+      <p class="credits">Diseño y desarrollo por
+        <a href="https://dgpglobalgroup.com" target="_blank" rel="noopener">DGP Global Group</a>
+        &amp; <a href="https://avamultiservices.com/" target="_blank" rel="noopener">AVA Multiservices</a>
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    // Apariciones al hacer scroll
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting) { e.target.classList.add("is-visible"); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll(".reveal").forEach((el) => io.observe(el));
+
+    // Resalta la sección actual en el índice
+    const links = [...document.querySelectorAll(".toc a")];
+    const spy = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (!e.isIntersecting) return;
+        links.forEach((l) => l.classList.toggle("is-active", l.getAttribute("href") === "#" + e.target.id));
+      });
+    }, { rootMargin: "-40% 0px -55% 0px" });
+    document.querySelectorAll("main section[id]").forEach((s) => spy.observe(s));
+
+    // Al imprimir, mostrar todo aunque no se haya hecho scroll
+    window.addEventListener("beforeprint", () => document.querySelectorAll(".reveal").forEach((el) => el.classList.add("is-visible")));
+  </script>
+</body>
+</html>
