@@ -4,9 +4,9 @@
 
 // Datos de contacto: cambiar aquí y se actualizan en todo el sitio
 const CONFIG = {
-  phone: "+10000000000",          // formato internacional, solo dígitos con "+"
-  phoneDisplay: "(000) 000-0000",
-  whatsapp: "10000000000",        // solo dígitos, con código de país
+  phone: "+19139672528",          // formato internacional, solo dígitos con "+"
+  phoneDisplay: "+1 (913) 967-2528",
+  whatsapp: "19139672528",        // solo dígitos, con código de país
   email: "info@ejemplo.com",
 };
 
