@@ -23,7 +23,7 @@ function onReady() {
   document.body.classList.add("is-ready");
 }
 // Se oculta el loader al cargar, o a más tardar en 2.5 s
-window.addEventListener("load", () => setTimeout(onReady, 500));
+window.addEventListener("load", () => setTimeout(onReady, 150));
 setTimeout(onReady, 2500);
 
 /* ---------- Enlaces de contacto ---------- */
