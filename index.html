@@ -3,21 +3,31 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Casa Nova Car Care LLC | Taller Mecánico</title>
-  <meta name="description" content="Casa Nova Car Care LLC — taller mecánico: mecánica general, refrigeración (A/C), frenos y electricidad automotriz.">
-  <meta name="theme-color" content="#0d0f12">
+  <title>Casanova Car Care LLC | Taller Mecánico</title>
+  <meta name="description" content="Casanova Car Care LLC — taller mecánico: mecánica general, refrigeración (A/C), frenos y electricidad automotriz. Llámanos al +1 (913) 967-2528.">
+  <meta name="theme-color" content="#07080a">
+  <meta property="og:title" content="Casanova Car Care LLC">
+  <meta property="og:description" content="Mecánica general, refrigeración, frenos y electricidad automotriz.">
+  <meta property="og:image" content="assets/IMG_6043.JPG">
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+  <link rel="preload" as="image" href="assets/logo.webp">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,600;0,700;0,800;1,800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
 
   <!-- Pantalla de carga -->
   <div class="loader" id="loader" aria-hidden="true">
-    <svg class="loader-gear" viewBox="0 0 100 100"><use href="#icon-gear"/></svg>
+    <div class="loader-ring"></div>
+    <img src="assets/logo-sm.webp" alt="" class="loader-logo" width="160" height="166">
   </div>
+
+  <!-- Barra de progreso de scroll -->
+  <div class="progress" id="progress" aria-hidden="true"></div>
 
   <!-- Íconos SVG reutilizables -->
   <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -53,14 +63,20 @@
       <symbol id="icon-clock" viewBox="0 0 24 24">
         <g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></g>
       </symbol>
-      <symbol id="icon-mail" viewBox="0 0 24 24">
-        <g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></g>
+      <symbol id="icon-search" viewBox="0 0 24 24">
+        <g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4.5 4.5"/></g>
+      </symbol>
+      <symbol id="icon-shield" viewBox="0 0 24 24">
+        <path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" d="M12 2.5l8 3v6c0 5-3.4 8.6-8 10-4.6-1.4-8-5-8-10v-6z M8.5 12l2.5 2.5 4.5-5"/>
+      </symbol>
+      <symbol id="icon-doc" viewBox="0 0 24 24">
+        <g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2.5h8l4 4v15H6z"/><path d="M14 2.5v4h4M9 12h6M9 16h6"/></g>
+      </symbol>
+      <symbol id="icon-user" viewBox="0 0 24 24">
+        <g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></g>
       </symbol>
       <symbol id="icon-whatsapp" viewBox="0 0 24 24">
         <path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.4.1-.2 0-.3 0-.5l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3z"/>
-      </symbol>
-      <symbol id="icon-star" viewBox="0 0 24 24">
-        <path fill="currentColor" d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4l-5.9 3.1 1.2-6.5L2.5 9.4l6.6-.9z"/>
       </symbol>
       <symbol id="icon-arrow" viewBox="0 0 24 24">
         <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M13 6l6 6-6 6"/>
@@ -71,18 +87,17 @@
   <!-- ===== Encabezado ===== -->
   <header class="header" id="header">
     <div class="container nav">
-      <!-- Cuando subas el logo a assets/, se reemplaza este bloque por <img src="assets/logo.png"> -->
-      <a href="#inicio" class="brand" aria-label="Casa Nova Car Care - Inicio">
-        <svg class="brand-icon"><use href="#icon-gear"/></svg>
-        <span class="brand-text">Casa Nova<small>Car Care LLC</small></span>
+      <a href="#inicio" class="brand" aria-label="Casanova Car Care - Inicio">
+        <img src="assets/logo-sm.webp" alt="" class="brand-logo" width="160" height="166">
+        <span class="brand-text">Casanova<small>Car Care LLC</small></span>
       </a>
 
       <nav class="menu" id="menu" aria-label="Principal">
         <a href="#servicios">Servicios</a>
         <a href="#nosotros">Nosotros</a>
         <a href="#proceso">Proceso</a>
-        <a href="#testimonios">Testimonios</a>
         <a href="#contacto">Contacto</a>
+        <a href="#" class="menu-phone js-phone"><svg><use href="#icon-phone"/></svg><span class="js-phone-text">+1 (913) 967-2528</span></a>
         <a href="#contacto" class="btn btn-primary btn-sm menu-cta">Agendar cita</a>
       </nav>
 
@@ -98,41 +113,53 @@
       <div class="hero-bg" aria-hidden="true">
         <div class="hero-grid"></div>
         <div class="hero-glow"></div>
-        <svg class="gear gear-1"><use href="#icon-gear"/></svg>
-        <svg class="gear gear-2"><use href="#icon-gear"/></svg>
-        <svg class="gear gear-3"><use href="#icon-gear"/></svg>
+        <div class="hero-streaks"><i></i><i></i><i></i><i></i><i></i></div>
       </div>
 
-      <div class="container hero-content">
-        <p class="eyebrow hero-anim" style="--d:.1s"><span class="dot"></span> Taller mecánico de confianza</p>
-        <h1 class="hero-title">
-          <span class="line"><span class="hero-anim" style="--d:.2s">Tu vehículo en</span></span>
-          <span class="line"><span class="hero-anim accent" style="--d:.35s">manos expertas</span></span>
-        </h1>
-        <p class="hero-sub hero-anim" style="--d:.5s">
-          Mecánica general, refrigeración, frenos y electricidad automotriz.
-          Diagnóstico preciso, precios honestos y trabajo garantizado.
-        </p>
-        <div class="hero-actions hero-anim" style="--d:.65s">
-          <a href="#contacto" class="btn btn-primary magnetic">Agendar cita <svg><use href="#icon-arrow"/></svg></a>
-          <a href="#servicios" class="btn btn-ghost">Ver servicios</a>
+      <div class="container hero-layout">
+        <div class="hero-content">
+          <p class="eyebrow hero-anim" style="--d:.1s"><span class="dot"></span> Taller mecánico de confianza</p>
+          <h1 class="hero-title">
+            <span class="line"><span class="hero-anim chrome" style="--d:.2s">Tu vehículo en</span></span>
+            <span class="line"><span class="hero-anim accent" style="--d:.35s">manos expertas</span></span>
+          </h1>
+          <p class="hero-sub hero-anim" style="--d:.5s">
+            Mecánica general, refrigeración, frenos y electricidad automotriz.
+            Diagnóstico preciso y precios honestos, con la atención que tu auto merece.
+          </p>
+          <div class="hero-actions hero-anim" style="--d:.65s">
+            <a href="#contacto" class="btn btn-primary magnetic">Agendar cita <svg><use href="#icon-arrow"/></svg></a>
+            <a href="#" class="btn btn-ghost js-phone"><svg><use href="#icon-phone"/></svg> <span class="js-phone-text">+1 (913) 967-2528</span></a>
+          </div>
+
+          <ul class="trust hero-anim" style="--d:.8s">
+            <li><svg><use href="#icon-search"/></svg>Diagnóstico computarizado</li>
+            <li><svg><use href="#icon-doc"/></svg>Presupuesto antes de reparar</li>
+            <li><svg><use href="#icon-user"/></svg>Atención personalizada</li>
+          </ul>
         </div>
 
-        <div class="stats hero-anim" style="--d:.8s">
-          <div class="stat"><strong data-count="10" data-suffix="+">0</strong><span>Años de experiencia</span></div>
-          <div class="stat"><strong data-count="2500" data-suffix="+">0</strong><span>Vehículos atendidos</span></div>
-          <div class="stat"><strong data-count="98" data-suffix="%">0</strong><span>Clientes satisfechos</span></div>
+        <div class="hero-visual hero-anim" style="--d:.4s" aria-hidden="true">
+          <div class="logo-stage" id="logo-stage">
+            <div class="logo-ring"></div>
+            <div class="logo-ring logo-ring-2"></div>
+            <div class="logo-halo"></div>
+            <div class="logo-wrap">
+              <img src="assets/logo.webp" alt="" class="hero-logo" width="720" height="746">
+              <span class="logo-shine"></span>
+            </div>
+          </div>
         </div>
       </div>
 
-      <a href="#marquee" class="scroll-hint" aria-label="Desplazarse hacia abajo"><span></span></a>
+      <a href="#servicios" class="scroll-hint" aria-label="Ver servicios"><span></span></a>
     </section>
 
     <!-- ===== Cinta animada ===== -->
-    <div class="marquee" id="marquee" aria-hidden="true">
+    <div class="marquee" aria-hidden="true">
       <div class="marquee-track">
-        <span>Mecánica general</span><i>✦</i><span>Aire acondicionado</span><i>✦</i><span>Frenos</span><i>✦</i><span>Electricidad automotriz</span><i>✦</i><span>Diagnóstico computarizado</span><i>✦</i><span>Cambio de aceite</span><i>✦</i>
-        <span>Mecánica general</span><i>✦</i><span>Aire acondicionado</span><i>✦</i><span>Frenos</span><i>✦</i><span>Electricidad automotriz</span><i>✦</i><span>Diagnóstico computarizado</span><i>✦</i><span>Cambio de aceite</span><i>✦</i>
+        <span>Mecánica general</span><svg><use href="#icon-gear"/></svg><span>Refrigeración A/C</span><svg><use href="#icon-gear"/></svg><span>Frenos</span><svg><use href="#icon-gear"/></svg><span>Electricidad automotriz</span><svg><use href="#icon-gear"/></svg><span>Diagnóstico computarizado</span><svg><use href="#icon-gear"/></svg>
+        <span>Mecánica general</span><svg><use href="#icon-gear"/></svg><span>Refrigeración A/C</span><svg><use href="#icon-gear"/></svg><span>Frenos</span><svg><use href="#icon-gear"/></svg><span>Electricidad automotriz</span><svg><use href="#icon-gear"/></svg><span>Diagnóstico computarizado</span><svg><use href="#icon-gear"/></svg>
       </div>
     </div>
 
@@ -141,7 +168,7 @@
       <div class="container">
         <div class="section-head reveal">
           <p class="eyebrow">Nuestros servicios</p>
-          <h2>Todo lo que tu auto necesita, <span class="accent">en un solo lugar</span></h2>
+          <h2><span class="chrome">Todo lo que tu auto necesita,</span> <span class="accent">en un solo lugar</span></h2>
         </div>
 
         <div class="services">
@@ -155,6 +182,7 @@
               <li><svg><use href="#icon-check"/></svg>Suspensión y dirección</li>
               <li><svg><use href="#icon-check"/></svg>Transmisión y embrague</li>
             </ul>
+            <a href="#" class="service-link js-service" data-service="Mecánica general">Cotizar <svg><use href="#icon-arrow"/></svg></a>
             <span class="service-num">01</span>
           </article>
 
@@ -168,6 +196,7 @@
               <li><svg><use href="#icon-check"/></svg>Radiadores y mangueras</li>
               <li><svg><use href="#icon-check"/></svg>Detección de fugas</li>
             </ul>
+            <a href="#" class="service-link js-service" data-service="Refrigeración / A/C">Cotizar <svg><use href="#icon-arrow"/></svg></a>
             <span class="service-num">02</span>
           </article>
 
@@ -181,6 +210,7 @@
               <li><svg><use href="#icon-check"/></svg>Líquido de frenos</li>
               <li><svg><use href="#icon-check"/></svg>Sistema ABS</li>
             </ul>
+            <a href="#" class="service-link js-service" data-service="Frenos">Cotizar <svg><use href="#icon-arrow"/></svg></a>
             <span class="service-num">03</span>
           </article>
 
@@ -191,9 +221,10 @@
             <ul>
               <li><svg><use href="#icon-check"/></svg>Diagnóstico por computadora</li>
               <li><svg><use href="#icon-check"/></svg>Baterías y alternadores</li>
-              <li><svg><use href="#icon-check"/></svg>Marchas / arranque</li>
+              <li><svg><use href="#icon-check"/></svg>Motor de arranque</li>
               <li><svg><use href="#icon-check"/></svg>Luces y cableado</li>
             </ul>
+            <a href="#" class="service-link js-service" data-service="Electricidad">Cotizar <svg><use href="#icon-arrow"/></svg></a>
             <span class="service-num">04</span>
           </article>
         </div>
@@ -204,36 +235,44 @@
     <section class="section section-alt" id="nosotros">
       <div class="container about">
         <div class="about-visual reveal from-left">
-          <div class="about-card">
-            <svg class="about-gear"><use href="#icon-gear"/></svg>
-            <div class="about-badge">
-              <strong data-count="100" data-suffix="%">0</strong>
-              <span>Compromiso con tu seguridad</span>
+          <!-- Tacómetro animado: la aguja sube al aparecer en pantalla -->
+          <div class="gauge" id="gauge" aria-hidden="true">
+            <svg viewBox="0 0 200 200">
+              <defs>
+                <linearGradient id="g-red" x1="0" y1="1" x2="1" y2="0">
+                  <stop offset="0" stop-color="#7a0000"/>
+                  <stop offset="1" stop-color="#ff2a2a"/>
+                </linearGradient>
+              </defs>
+              <circle class="gauge-track" cx="100" cy="100" r="80"/>
+              <circle class="gauge-fill" cx="100" cy="100" r="80"/>
+              <g class="gauge-ticks" id="gauge-ticks"></g>
+              <g class="gauge-needle"><path d="M100 100 L97 96 L100 30 L103 96 Z"/></g>
+              <circle cx="100" cy="100" r="9" class="gauge-hub"/>
+              <circle cx="100" cy="100" r="3.5" fill="#ff2a2a"/>
+            </svg>
+            <div class="gauge-label">
+              <strong>Casanova</strong>
+              <span>Car Care</span>
             </div>
           </div>
         </div>
 
         <div class="about-text reveal from-right">
           <p class="eyebrow">¿Por qué elegirnos?</p>
-          <h2>Mecánicos de confianza, <span class="accent">resultados reales</span></h2>
+          <h2><span class="chrome">Mecánicos de confianza,</span> <span class="accent">resultados reales</span></h2>
           <p>
-            En Casa Nova Car Care tratamos cada vehículo como si fuera nuestro.
+            En Casanova Car Care tratamos cada vehículo como si fuera nuestro.
             Te explicamos el problema con claridad, te damos un presupuesto antes de empezar
             y solo hacemos lo que tu auto realmente necesita.
           </p>
 
-          <div class="bars">
-            <div class="bar"><div class="bar-label"><span>Diagnóstico preciso</span><span>98%</span></div><div class="bar-track"><i style="--w:98%"></i></div></div>
-            <div class="bar"><div class="bar-label"><span>Entrega a tiempo</span><span>95%</span></div><div class="bar-track"><i style="--w:95%"></i></div></div>
-            <div class="bar"><div class="bar-label"><span>Precios justos</span><span>100%</span></div><div class="bar-track"><i style="--w:100%"></i></div></div>
+          <div class="features">
+            <div class="feature"><span class="feature-icon"><svg><use href="#icon-search"/></svg></span><div><h3>Diagnóstico preciso</h3><p>Equipo computarizado para encontrar la falla real.</p></div></div>
+            <div class="feature"><span class="feature-icon"><svg><use href="#icon-doc"/></svg></span><div><h3>Sin sorpresas</h3><p>Apruebas el presupuesto antes de cualquier reparación.</p></div></div>
+            <div class="feature"><span class="feature-icon"><svg><use href="#icon-shield"/></svg></span><div><h3>Refacciones de calidad</h3><p>Piezas confiables para que tu reparación dure.</p></div></div>
+            <div class="feature"><span class="feature-icon"><svg><use href="#icon-user"/></svg></span><div><h3>Trato directo</h3><p>Hablas con quien repara tu auto, sin intermediarios.</p></div></div>
           </div>
-
-          <ul class="features">
-            <li><svg><use href="#icon-check"/></svg>Presupuesto sin compromiso</li>
-            <li><svg><use href="#icon-check"/></svg>Garantía en el trabajo</li>
-            <li><svg><use href="#icon-check"/></svg>Refacciones de calidad</li>
-            <li><svg><use href="#icon-check"/></svg>Equipo de diagnóstico moderno</li>
-          </ul>
         </div>
       </div>
     </section>
@@ -243,7 +282,7 @@
       <div class="container">
         <div class="section-head reveal">
           <p class="eyebrow">Cómo trabajamos</p>
-          <h2>Un proceso <span class="accent">simple y transparente</span></h2>
+          <h2><span class="chrome">Un proceso</span> <span class="accent">simple y transparente</span></h2>
         </div>
 
         <div class="steps" id="steps">
@@ -256,47 +295,18 @@
       </div>
     </section>
 
-    <!-- ===== Testimonios ===== -->
-    <!-- IMPORTANTE: reemplazar con reseñas reales de clientes antes de publicar -->
-    <section class="section section-alt" id="testimonios">
-      <div class="container">
-        <div class="section-head reveal">
-          <p class="eyebrow">Testimonios</p>
-          <h2>Lo que dicen <span class="accent">nuestros clientes</span></h2>
-        </div>
-
-        <div class="slider reveal" id="slider">
-          <div class="slides">
-            <figure class="slide is-active">
-              <div class="stars"><svg><use href="#icon-star"/></svg><svg><use href="#icon-star"/></svg><svg><use href="#icon-star"/></svg><svg><use href="#icon-star"/></svg><svg><use href="#icon-star"/></svg></div>
-              <blockquote>“Texto de reseña de ejemplo. Reemplazar con la opinión real de un cliente sobre el servicio de A/C.”</blockquote>
-              <figcaption><strong>Nombre del cliente</strong><span>Servicio de refrigeración</span></figcaption>
-            </figure>
-            <figure class="slide">
-              <div class="stars"><svg><use href="#icon-star"/></svg><svg><use href="#icon-star"/></svg><svg><use href="#icon-star"/></svg><svg><use href="#icon-star"/></svg><svg><use href="#icon-star"/></svg></div>
-              <blockquote>“Texto de reseña de ejemplo. Reemplazar con la opinión real de un cliente sobre el servicio de frenos.”</blockquote>
-              <figcaption><strong>Nombre del cliente</strong><span>Servicio de frenos</span></figcaption>
-            </figure>
-            <figure class="slide">
-              <div class="stars"><svg><use href="#icon-star"/></svg><svg><use href="#icon-star"/></svg><svg><use href="#icon-star"/></svg><svg><use href="#icon-star"/></svg><svg><use href="#icon-star"/></svg></div>
-              <blockquote>“Texto de reseña de ejemplo. Reemplazar con la opinión real de un cliente sobre electricidad automotriz.”</blockquote>
-              <figcaption><strong>Nombre del cliente</strong><span>Electricidad automotriz</span></figcaption>
-            </figure>
-          </div>
-          <div class="slider-dots" role="tablist" aria-label="Testimonios"></div>
-        </div>
-      </div>
-    </section>
-
     <!-- ===== CTA ===== -->
     <section class="cta">
-      <div class="container cta-inner reveal zoom">
-        <svg class="cta-gear"><use href="#icon-gear"/></svg>
-        <h2>¿Tu auto hace un ruido extraño o el A/C no enfría?</h2>
-        <p>No esperes a que el problema crezca. Agenda tu diagnóstico hoy.</p>
-        <div class="hero-actions">
-          <a href="#" class="btn btn-dark js-whatsapp"><svg><use href="#icon-whatsapp"/></svg> Escríbenos por WhatsApp</a>
-          <a href="#" class="btn btn-outline-dark js-phone"><svg><use href="#icon-phone"/></svg> Llamar ahora</a>
+      <div class="container">
+        <div class="cta-inner reveal zoom">
+          <svg class="cta-gear"><use href="#icon-gear"/></svg>
+          <svg class="cta-gear cta-gear-2"><use href="#icon-gear"/></svg>
+          <h2>¿Tu auto hace un ruido extraño o el A/C no enfría?</h2>
+          <p>No esperes a que el problema crezca. Agenda tu diagnóstico hoy.</p>
+          <div class="cta-actions">
+            <a href="#" class="btn btn-dark js-whatsapp"><svg><use href="#icon-whatsapp"/></svg> Escríbenos por WhatsApp</a>
+            <a href="#" class="btn btn-outline-light js-phone"><svg><use href="#icon-phone"/></svg> Llamar ahora</a>
+          </div>
         </div>
       </div>
     </section>
@@ -306,10 +316,10 @@
       <div class="container contact">
         <div class="contact-info reveal from-left">
           <p class="eyebrow">Contacto</p>
-          <h2>Visítanos o <span class="accent">agenda tu cita</span></h2>
+          <h2><span class="chrome">Visítanos o</span> <span class="accent">agenda tu cita</span></h2>
           <ul class="contact-list">
             <li><span class="ci"><svg><use href="#icon-phone"/></svg></span><div><strong>Teléfono</strong><a href="#" class="js-phone js-phone-text">+1 (913) 967-2528</a></div></li>
-            <li><span class="ci"><svg><use href="#icon-mail"/></svg></span><div><strong>Correo</strong><a href="#" class="js-email">info@ejemplo.com</a></div></li>
+            <li><span class="ci"><svg><use href="#icon-whatsapp"/></svg></span><div><strong>WhatsApp</strong><a href="#" class="js-whatsapp">Escríbenos un mensaje</a></div></li>
             <li><span class="ci"><svg><use href="#icon-pin"/></svg></span><div><strong>Dirección</strong><span>Dirección del taller, Ciudad, Estado</span></div></li>
             <li><span class="ci"><svg><use href="#icon-clock"/></svg></span><div><strong>Horario</strong><span>Lun – Vie: 8:00 – 18:00 · Sáb: 8:00 – 14:00</span></div></li>
           </ul>
@@ -317,8 +327,9 @@
 
         <form class="contact-form reveal from-right" id="contact-form" novalidate>
           <h3>Solicita tu cita</h3>
-          <div class="field"><input type="text" id="f-name" name="nombre" placeholder=" " required><label for="f-name">Nombre</label></div>
-          <div class="field"><input type="tel" id="f-phone" name="telefono" placeholder=" " required><label for="f-phone">Teléfono</label></div>
+          <p class="form-intro">Llena los datos y te abrimos WhatsApp con tu mensaje listo.</p>
+          <div class="field"><input type="text" id="f-name" name="nombre" placeholder=" " autocomplete="name" required><label for="f-name">Nombre</label></div>
+          <div class="field"><input type="tel" id="f-phone" name="telefono" placeholder=" " autocomplete="tel" required><label for="f-phone">Teléfono</label></div>
           <div class="field"><input type="text" id="f-car" name="vehiculo" placeholder=" "><label for="f-car">Vehículo (marca, modelo, año)</label></div>
           <div class="field">
             <select id="f-service" name="servicio" required>
@@ -343,8 +354,8 @@
   <footer class="footer">
     <div class="container footer-inner">
       <a href="#inicio" class="brand">
-        <svg class="brand-icon"><use href="#icon-gear"/></svg>
-        <span class="brand-text">Casa Nova<small>Car Care LLC</small></span>
+        <img src="assets/logo-sm.webp" alt="" class="brand-logo" width="160" height="166" loading="lazy">
+        <span class="brand-text">Casanova<small>Car Care LLC</small></span>
       </a>
       <nav class="footer-links" aria-label="Pie de página">
         <a href="#servicios">Servicios</a>
@@ -352,7 +363,8 @@
         <a href="#proceso">Proceso</a>
         <a href="#contacto">Contacto</a>
       </nav>
-      <p>&copy; <span id="year"></span> Casa Nova Car Care LLC. Todos los derechos reservados.</p>
+      <a href="#" class="footer-phone js-phone"><svg><use href="#icon-phone"/></svg><span class="js-phone-text">+1 (913) 967-2528</span></a>
+      <p>&copy; <span id="year"></span> Casanova Car Care LLC. Todos los derechos reservados.</p>
     </div>
   </footer>
 

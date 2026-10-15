@@ -1,5 +1,5 @@
 /* =========================================================
-   Casa Nova Car Care LLC — interacciones y animaciones
+   Casanova Car Care LLC — interacciones y animaciones
    ========================================================= */
 
 // Datos de contacto: cambiar aquí y se actualizan en todo el sitio
@@ -7,7 +7,6 @@ const CONFIG = {
   phone: "+19139672528",          // formato internacional, solo dígitos con "+"
   phoneDisplay: "+1 (913) 967-2528",
   whatsapp: "19139672528",        // solo dígitos, con código de país
-  email: "info@ejemplo.com",
 };
 
 const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -15,53 +14,62 @@ const finePointer = window.matchMedia("(hover: hover) and (pointer: fine)").matc
 
 /* ---------- Carga inicial ---------- */
 document.body.classList.add("is-loading");
+let readyDone = false;
 function onReady() {
+  if (readyDone) return;
+  readyDone = true;
   document.getElementById("loader").classList.add("is-hidden");
   document.body.classList.remove("is-loading");
   document.body.classList.add("is-ready");
-  heroCounters();
 }
 // Se oculta el loader al cargar, o a más tardar en 2.5 s
-let readyDone = false;
-function readyOnce() { if (!readyDone) { readyDone = true; onReady(); } }
-window.addEventListener("load", () => setTimeout(readyOnce, 400));
-setTimeout(readyOnce, 2500);
+window.addEventListener("load", () => setTimeout(onReady, 500));
+setTimeout(onReady, 2500);
 
 /* ---------- Enlaces de contacto ---------- */
 const waLink = (text) =>
   `https://wa.me/${CONFIG.whatsapp}${text ? `?text=${encodeURIComponent(text)}` : ""}`;
 
-document.querySelectorAll(".js-whatsapp").forEach((a) => {
-  a.href = waLink("Hola, quiero información sobre sus servicios.");
+function openWhatsApp(a, text) {
+  a.href = waLink(text);
   a.target = "_blank";
   a.rel = "noopener";
-});
+}
+document.querySelectorAll(".js-whatsapp").forEach((a) =>
+  openWhatsApp(a, "Hola, quiero información sobre sus servicios.")
+);
+document.querySelectorAll(".js-service").forEach((a) =>
+  openWhatsApp(a, `Hola, quiero cotizar un servicio de: ${a.dataset.service}.`)
+);
 document.querySelectorAll(".js-phone").forEach((a) => (a.href = `tel:${CONFIG.phone}`));
-document.querySelectorAll(".js-phone-text").forEach((a) => (a.textContent = CONFIG.phoneDisplay));
-document.querySelectorAll(".js-email").forEach((a) => {
-  a.href = `mailto:${CONFIG.email}`;
-  a.textContent = CONFIG.email;
-});
+document.querySelectorAll(".js-phone-text").forEach((el) => (el.textContent = CONFIG.phoneDisplay));
 document.getElementById("year").textContent = new Date().getFullYear();
 
-/* ---------- Header: fondo al bajar, se oculta al hacer scroll hacia abajo ---------- */
+/* ---------- Header, barra de progreso y botón "arriba" ---------- */
 const header = document.getElementById("header");
 const toTop = document.getElementById("to-top");
+const progress = document.getElementById("progress");
+const burger = document.getElementById("burger");
+const menu = document.getElementById("menu");
 let lastY = window.scrollY;
+let ticking = false;
 
 function onScroll() {
   const y = window.scrollY;
+  const max = document.documentElement.scrollHeight - window.innerHeight;
+  progress.style.setProperty("--p", max > 0 ? y / max : 0);
   header.classList.toggle("is-scrolled", y > 40);
-  header.classList.toggle("is-hidden", y > lastY && y > 400 && !menu.classList.contains("is-open"));
+  header.classList.toggle("is-hidden", y > lastY && y > 500 && !menu.classList.contains("is-open"));
   toTop.classList.toggle("is-visible", y > 700);
   lastY = y;
+  ticking = false;
 }
-window.addEventListener("scroll", onScroll, { passive: true });
+window.addEventListener("scroll", () => {
+  if (!ticking) { requestAnimationFrame(onScroll); ticking = true; }
+}, { passive: true });
+onScroll();
 
 /* ---------- Menú móvil ---------- */
-const burger = document.getElementById("burger");
-const menu = document.getElementById("menu");
-
 function setMenu(open) {
   menu.classList.toggle("is-open", open);
   burger.classList.toggle("is-open", open);
@@ -74,7 +82,7 @@ menu.querySelectorAll("a").forEach((a) => a.addEventListener("click", () => setM
 document.addEventListener("keydown", (e) => e.key === "Escape" && setMenu(false));
 
 /* ---------- Enlace activo según la sección visible ---------- */
-const navLinks = [...menu.querySelectorAll("a:not(.btn)")];
+const navLinks = [...menu.querySelectorAll('a[href^="#"]:not(.btn)')];
 const sectionObserver = new IntersectionObserver(
   (entries) => {
     entries.forEach((entry) => {
@@ -92,7 +100,6 @@ const revealObserver = new IntersectionObserver(
     entries.forEach((entry) => {
       if (!entry.isIntersecting) return;
       entry.target.classList.add("is-visible");
-      entry.target.querySelectorAll("[data-count]").forEach(countUp);
       revealObserver.unobserve(entry.target);
     });
   },
@@ -100,29 +107,30 @@ const revealObserver = new IntersectionObserver(
 );
 document.querySelectorAll(".reveal, #steps").forEach((el) => revealObserver.observe(el));
 
-/* ---------- Contadores ---------- */
-function countUp(el) {
-  if (el.dataset.done) return;
-  el.dataset.done = "1";
-  const target = Number(el.dataset.count);
-  const suffix = el.dataset.suffix || "";
-  if (reduceMotion) { el.textContent = target.toLocaleString("es") + suffix; return; }
-  const duration = 2000;
-  const start = performance.now();
-  const tick = (now) => {
-    const p = Math.min((now - start) / duration, 1);
-    const eased = 1 - Math.pow(1 - p, 4);
-    el.textContent = Math.round(target * eased).toLocaleString("es") + suffix;
-    if (p < 1) requestAnimationFrame(tick);
-  };
-  requestAnimationFrame(tick);
-}
-function heroCounters() {
-  setTimeout(() => document.querySelectorAll(".stats [data-count]").forEach(countUp), 900);
-}
+/* ---------- Marcas del tacómetro ---------- */
+(function gaugeTicks() {
+  const g = document.getElementById("gauge-ticks");
+  const ns = "http://www.w3.org/2000/svg";
+  const total = 40;
+  for (let i = 0; i <= total; i++) {
+    const angle = (135 + (270 * i) / total) * (Math.PI / 180);
+    const major = i % 5 === 0;
+    const r1 = major ? 60 : 64;
+    const r2 = 70;
+    const line = document.createElementNS(ns, "line");
+    line.setAttribute("x1", 100 + r1 * Math.cos(angle));
+    line.setAttribute("y1", 100 + r1 * Math.sin(angle));
+    line.setAttribute("x2", 100 + r2 * Math.cos(angle));
+    line.setAttribute("y2", 100 + r2 * Math.sin(angle));
+    if (major) line.classList.add("major");
+    if (i >= total * 0.8) line.classList.add("hot");
+    g.appendChild(line);
+  }
+})();
 
-/* ---------- Tarjetas: inclinación 3D y brillo que sigue al cursor ---------- */
+/* ---------- Efectos con el mouse (solo escritorio) ---------- */
 if (finePointer && !reduceMotion) {
+  // Tarjetas: inclinación 3D y brillo que sigue al cursor
   document.querySelectorAll(".tilt").forEach((card) => {
     card.addEventListener("mousemove", (e) => {
       const r = card.getBoundingClientRect();
@@ -135,7 +143,7 @@ if (finePointer && !reduceMotion) {
     card.addEventListener("mouseleave", () => (card.style.transform = ""));
   });
 
-  /* Botones magnéticos */
+  // Botones magnéticos
   document.querySelectorAll(".magnetic").forEach((btn) => {
     btn.addEventListener("mousemove", (e) => {
       const r = btn.getBoundingClientRect();
@@ -146,65 +154,16 @@ if (finePointer && !reduceMotion) {
     btn.addEventListener("mouseleave", () => (btn.style.transform = ""));
   });
 
-  /* Parallax suave de los engranes del hero */
-  const gears = document.querySelectorAll(".hero .gear");
+  // El logo del hero se inclina siguiendo el cursor
   const hero = document.querySelector(".hero");
+  const stage = document.getElementById("logo-stage");
   hero.addEventListener("mousemove", (e) => {
     const x = e.clientX / window.innerWidth - 0.5;
     const y = e.clientY / window.innerHeight - 0.5;
-    gears.forEach((g, i) => {
-      const depth = (i + 1) * 14;
-      g.style.translate = `${x * depth}px ${y * depth}px`;
-    });
+    stage.style.transform = `perspective(1000px) rotateY(${x * 14}deg) rotateX(${-y * 14}deg)`;
   });
+  hero.addEventListener("mouseleave", () => (stage.style.transform = ""));
 }
-
-/* ---------- Carrusel de testimonios ---------- */
-(function slider() {
-  const root = document.getElementById("slider");
-  const slides = [...root.querySelectorAll(".slide")];
-  const dotsWrap = root.querySelector(".slider-dots");
-  let index = 0;
-  let timer;
-
-  const dots = slides.map((_, i) => {
-    const b = document.createElement("button");
-    b.type = "button";
-    b.setAttribute("role", "tab");
-    b.setAttribute("aria-label", `Testimonio ${i + 1}`);
-    b.addEventListener("click", () => { go(i); restart(); });
-    dotsWrap.appendChild(b);
-    return b;
-  });
-
-  function go(i) {
-    index = (i + slides.length) % slides.length;
-    slides.forEach((s, n) => s.classList.toggle("is-active", n === index));
-    dots.forEach((d, n) => {
-      d.classList.toggle("is-active", n === index);
-      d.setAttribute("aria-selected", String(n === index));
-    });
-  }
-  function restart() {
-    clearInterval(timer);
-    if (!reduceMotion) timer = setInterval(() => go(index + 1), 5500);
-  }
-
-  // Deslizar con el dedo en móvil
-  let startX = null;
-  root.addEventListener("touchstart", (e) => (startX = e.touches[0].clientX), { passive: true });
-  root.addEventListener("touchend", (e) => {
-    if (startX === null) return;
-    const dx = e.changedTouches[0].clientX - startX;
-    if (Math.abs(dx) > 40) { go(index + (dx < 0 ? 1 : -1)); restart(); }
-    startX = null;
-  });
-  root.addEventListener("mouseenter", () => clearInterval(timer));
-  root.addEventListener("mouseleave", restart);
-
-  go(0);
-  restart();
-})();
 
 /* ---------- Formulario: arma el mensaje y lo abre en WhatsApp ---------- */
 const form = document.getElementById("contact-form");
@@ -214,9 +173,8 @@ form.addEventListener("submit", (e) => {
   e.preventDefault();
   let valid = true;
   form.querySelectorAll("[required]").forEach((input) => {
-    const field = input.closest(".field");
     const ok = input.value.trim() !== "";
-    field.classList.toggle("has-error", !ok);
+    input.closest(".field").classList.toggle("has-error", !ok);
     if (!ok) valid = false;
   });
   if (!valid) {
