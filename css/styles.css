@@ -114,8 +114,6 @@ h1, h2, h3 { font-family: var(--font-head); line-height: 1.02; letter-spacing: .
   margin-bottom: 16px;
 }
 .eyebrow::before { content: ""; width: 28px; height: 2px; background: var(--red-grad); }
-.eyebrow:has(.dot)::before { display: none; }
-.eyebrow .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--red-hi); animation: pulse 2s infinite; }
 
 /* ---------- Header ---------- */
 .header {
@@ -494,7 +492,6 @@ body.is-ready .hero-anim {
 @keyframes glow { 0%, 100% { opacity: .8; transform: translate(0, 0); } 50% { opacity: 1; transform: translate(-30px, 20px); } }
 @keyframes shine { 0% { background-position: 150% 0; } 45%, 100% { background-position: -50% 0; } }
 @keyframes streak { 0% { transform: translateX(-100%); opacity: 0; } 10% { opacity: .45; } 60% { opacity: .25; } 100% { transform: translateX(380%); opacity: 0; } }
-@keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(255, 42, 42, .7); } 70% { box-shadow: 0 0 0 10px rgba(255, 42, 42, 0); } 100% { box-shadow: 0 0 0 0 rgba(255, 42, 42, 0); } }
 @keyframes ring { 0% { transform: scale(1); opacity: .6; } 100% { transform: scale(1.7); opacity: 0; } }
 @keyframes marquee { to { transform: translateX(-50%); } }
 @keyframes grid-move { to { background-position: 0 64px; } }
@@ -514,7 +511,6 @@ body.is-ready .hero-anim {
   .logo-stage { width: min(340px, 82vw); }
   .hero-sub { margin-left: auto; margin-right: auto; }
   .hero-actions, .trust { justify-content: center; }
-  .hero-content .eyebrow { justify-content: center; }
   .scroll-hint { display: none; }
   .about, .contact { grid-template-columns: 1fr; gap: 56px; }
   .about-visual { max-width: 400px; margin: 0 auto; width: 100%; }
