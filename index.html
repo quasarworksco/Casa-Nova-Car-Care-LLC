@@ -3,192 +3,363 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Casa Nova Car Care LLC</title>
-  <meta name="description" content="Casa Nova Car Care LLC — lavado y detallado profesional de autos.">
-  <style>
-    :root {
-      --color-primary: #0b3d91;
-      --color-accent: #f5a623;
-      --color-dark: #111827;
-      --color-light: #f9fafb;
-      --color-text: #1f2937;
-      --color-muted: #6b7280;
-      --radius: 10px;
-      --max-width: 1100px;
-    }
+  <title>Casa Nova Car Care LLC | Taller Mecánico</title>
+  <meta name="description" content="Casa Nova Car Care LLC — taller mecánico: mecánica general, refrigeración (A/C), frenos y electricidad automotriz.">
+  <meta name="theme-color" content="#0d0f12">
 
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-
-    body {
-      font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-      color: var(--color-text);
-      background: #fff;
-      line-height: 1.6;
-    }
-
-    a { color: inherit; text-decoration: none; }
-
-    .container {
-      width: 100%;
-      max-width: var(--max-width);
-      margin: 0 auto;
-      padding: 0 16px;
-    }
-
-    /* Header */
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 10;
-      background: var(--color-dark);
-      color: #fff;
-    }
-    .nav {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      height: 64px;
-    }
-    .logo { font-weight: 700; font-size: 1.2rem; }
-    .logo span { color: var(--color-accent); }
-    .nav ul { display: flex; gap: 24px; list-style: none; }
-    .nav ul a:hover { color: var(--color-accent); }
-
-    /* Hero */
-    .hero {
-      background: linear-gradient(135deg, var(--color-primary), var(--color-dark));
-      color: #fff;
-      padding: 100px 0;
-      text-align: center;
-    }
-    .hero h1 { font-size: clamp(2rem, 5vw, 3rem); margin-bottom: 16px; }
-    .hero p { font-size: 1.15rem; opacity: 0.9; margin-bottom: 32px; }
-
-    .btn {
-      display: inline-block;
-      padding: 12px 28px;
-      border-radius: var(--radius);
-      font-weight: 600;
-      background: var(--color-accent);
-      color: var(--color-dark);
-      transition: opacity 0.2s;
-    }
-    .btn:hover { opacity: 0.85; }
-
-    /* Sections */
-    section { padding: 80px 0; }
-    section h2 {
-      font-size: 2rem;
-      text-align: center;
-      margin-bottom: 40px;
-    }
-    .alt { background: var(--color-light); }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 24px;
-    }
-    .card {
-      background: #fff;
-      border: 1px solid #e5e7eb;
-      border-radius: var(--radius);
-      padding: 24px;
-    }
-    .card h3 { margin-bottom: 8px; color: var(--color-primary); }
-    .card p { color: var(--color-muted); }
-
-    /* Contact */
-    .contact-info { text-align: center; }
-    .contact-info p { margin-bottom: 8px; }
-
-    /* Footer */
-    footer {
-      background: var(--color-dark);
-      color: #9ca3af;
-      text-align: center;
-      padding: 24px 0;
-      font-size: 0.9rem;
-    }
-
-    @media (max-width: 640px) {
-      .nav ul { display: none; }
-      .hero { padding: 72px 0; }
-      section { padding: 56px 0; }
-    }
-  </style>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
 
-  <header>
+  <!-- Pantalla de carga -->
+  <div class="loader" id="loader" aria-hidden="true">
+    <svg class="loader-gear" viewBox="0 0 100 100"><use href="#icon-gear"/></svg>
+  </div>
+
+  <!-- Íconos SVG reutilizables -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+      <symbol id="icon-gear" viewBox="0 0 100 100">
+        <path fill="currentColor" d="M56 6l3 12a33 33 0 0 1 9 4l11-6 9 9-6 11a33 33 0 0 1 4 9l12 3v12l-12 3a33 33 0 0 1-4 9l6 11-9 9-11-6a33 33 0 0 1-9 4l-3 12H44l-3-12a33 33 0 0 1-9-4l-11 6-9-9 6-11a33 33 0 0 1-4-9L2 56V44l12-3a33 33 0 0 1 4-9l-6-11 9-9 11 6a33 33 0 0 1 9-4l3-12zM50 33a17 17 0 1 0 0 34 17 17 0 0 0 0-34z"/>
+      </symbol>
+      <symbol id="icon-wrench" viewBox="0 0 24 24">
+        <path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M14.7 6.3a4 4 0 0 0 5 5l-9.4 9.4a2.1 2.1 0 0 1-3-3l9.4-9.4a4 4 0 0 0-5-5l2.6 2.6-.6 2.4-2.4.6z"/>
+      </symbol>
+      <symbol id="icon-snow" viewBox="0 0 24 24">
+        <path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" d="M12 2v20M4.2 6.5l15.6 11M4.2 17.5l15.6-11M9 3.5l3 2.5 3-2.5M9 20.5l3-2.5 3 2.5M3 10l3.6 1.3L6 15M21 10l-3.6 1.3L18 15"/>
+      </symbol>
+      <symbol id="icon-brake" viewBox="0 0 24 24">
+        <g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+          <circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="2.5"/>
+          <path d="M12 6.5v1M17.5 12h-1M12 17.5v-1M6.5 12h1"/>
+          <path d="M18 5a10 10 0 0 1 2.7 4.5" stroke-width="3"/>
+        </g>
+      </symbol>
+      <symbol id="icon-bolt" viewBox="0 0 24 24">
+        <path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" d="M13 2L4 14h7l-1 8 9-12h-7z"/>
+      </symbol>
+      <symbol id="icon-check" viewBox="0 0 24 24">
+        <path fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" d="M5 12.5l4.5 4.5L19 7.5"/>
+      </symbol>
+      <symbol id="icon-phone" viewBox="0 0 24 24">
+        <path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" d="M5 3h4l2 5-2.5 1.5a11 11 0 0 0 6 6L16 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 5a2 2 0 0 1 2-2z"/>
+      </symbol>
+      <symbol id="icon-pin" viewBox="0 0 24 24">
+        <g fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 22s7-6.5 7-12a7 7 0 0 0-14 0c0 5.5 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></g>
+      </symbol>
+      <symbol id="icon-clock" viewBox="0 0 24 24">
+        <g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></g>
+      </symbol>
+      <symbol id="icon-mail" viewBox="0 0 24 24">
+        <g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></g>
+      </symbol>
+      <symbol id="icon-whatsapp" viewBox="0 0 24 24">
+        <path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.4.1-.2 0-.3 0-.5l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3z"/>
+      </symbol>
+      <symbol id="icon-star" viewBox="0 0 24 24">
+        <path fill="currentColor" d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4l-5.9 3.1 1.2-6.5L2.5 9.4l6.6-.9z"/>
+      </symbol>
+      <symbol id="icon-arrow" viewBox="0 0 24 24">
+        <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M13 6l6 6-6 6"/>
+      </symbol>
+    </defs>
+  </svg>
+
+  <!-- ===== Encabezado ===== -->
+  <header class="header" id="header">
     <div class="container nav">
-      <a href="#inicio" class="logo">Casa Nova <span>Car Care</span></a>
-      <nav>
-        <ul>
-          <li><a href="#servicios">Servicios</a></li>
-          <li><a href="#nosotros">Nosotros</a></li>
-          <li><a href="#contacto">Contacto</a></li>
-        </ul>
+      <!-- Cuando subas el logo a assets/, se reemplaza este bloque por <img src="assets/logo.png"> -->
+      <a href="#inicio" class="brand" aria-label="Casa Nova Car Care - Inicio">
+        <svg class="brand-icon"><use href="#icon-gear"/></svg>
+        <span class="brand-text">Casa Nova<small>Car Care LLC</small></span>
+      </a>
+
+      <nav class="menu" id="menu" aria-label="Principal">
+        <a href="#servicios">Servicios</a>
+        <a href="#nosotros">Nosotros</a>
+        <a href="#proceso">Proceso</a>
+        <a href="#testimonios">Testimonios</a>
+        <a href="#contacto">Contacto</a>
+        <a href="#contacto" class="btn btn-primary btn-sm menu-cta">Agendar cita</a>
       </nav>
+
+      <button class="burger" id="burger" aria-label="Abrir menú" aria-expanded="false" aria-controls="menu">
+        <span></span><span></span><span></span>
+      </button>
     </div>
   </header>
 
   <main>
+    <!-- ===== Hero ===== -->
     <section class="hero" id="inicio">
-      <div class="container">
-        <h1>Tu auto, como nuevo</h1>
-        <p>Lavado y detallado profesional con atención a cada detalle.</p>
-        <a href="#contacto" class="btn">Agenda tu cita</a>
+      <div class="hero-bg" aria-hidden="true">
+        <div class="hero-grid"></div>
+        <div class="hero-glow"></div>
+        <svg class="gear gear-1"><use href="#icon-gear"/></svg>
+        <svg class="gear gear-2"><use href="#icon-gear"/></svg>
+        <svg class="gear gear-3"><use href="#icon-gear"/></svg>
       </div>
+
+      <div class="container hero-content">
+        <p class="eyebrow hero-anim" style="--d:.1s"><span class="dot"></span> Taller mecánico de confianza</p>
+        <h1 class="hero-title">
+          <span class="line"><span class="hero-anim" style="--d:.2s">Tu vehículo en</span></span>
+          <span class="line"><span class="hero-anim accent" style="--d:.35s">manos expertas</span></span>
+        </h1>
+        <p class="hero-sub hero-anim" style="--d:.5s">
+          Mecánica general, refrigeración, frenos y electricidad automotriz.
+          Diagnóstico preciso, precios honestos y trabajo garantizado.
+        </p>
+        <div class="hero-actions hero-anim" style="--d:.65s">
+          <a href="#contacto" class="btn btn-primary magnetic">Agendar cita <svg><use href="#icon-arrow"/></svg></a>
+          <a href="#servicios" class="btn btn-ghost">Ver servicios</a>
+        </div>
+
+        <div class="stats hero-anim" style="--d:.8s">
+          <div class="stat"><strong data-count="10" data-suffix="+">0</strong><span>Años de experiencia</span></div>
+          <div class="stat"><strong data-count="2500" data-suffix="+">0</strong><span>Vehículos atendidos</span></div>
+          <div class="stat"><strong data-count="98" data-suffix="%">0</strong><span>Clientes satisfechos</span></div>
+        </div>
+      </div>
+
+      <a href="#marquee" class="scroll-hint" aria-label="Desplazarse hacia abajo"><span></span></a>
     </section>
 
-    <section id="servicios">
+    <!-- ===== Cinta animada ===== -->
+    <div class="marquee" id="marquee" aria-hidden="true">
+      <div class="marquee-track">
+        <span>Mecánica general</span><i>✦</i><span>Aire acondicionado</span><i>✦</i><span>Frenos</span><i>✦</i><span>Electricidad automotriz</span><i>✦</i><span>Diagnóstico computarizado</span><i>✦</i><span>Cambio de aceite</span><i>✦</i>
+        <span>Mecánica general</span><i>✦</i><span>Aire acondicionado</span><i>✦</i><span>Frenos</span><i>✦</i><span>Electricidad automotriz</span><i>✦</i><span>Diagnóstico computarizado</span><i>✦</i><span>Cambio de aceite</span><i>✦</i>
+      </div>
+    </div>
+
+    <!-- ===== Servicios ===== -->
+    <section class="section" id="servicios">
       <div class="container">
-        <h2>Servicios</h2>
-        <div class="grid">
-          <div class="card">
-            <h3>Lavado exterior</h3>
-            <p>Descripción del servicio.</p>
-          </div>
-          <div class="card">
-            <h3>Detallado interior</h3>
-            <p>Descripción del servicio.</p>
-          </div>
-          <div class="card">
-            <h3>Pulido y encerado</h3>
-            <p>Descripción del servicio.</p>
-          </div>
+        <div class="section-head reveal">
+          <p class="eyebrow">Nuestros servicios</p>
+          <h2>Todo lo que tu auto necesita, <span class="accent">en un solo lugar</span></h2>
+        </div>
+
+        <div class="services">
+          <article class="service-card reveal tilt" style="--d:0s">
+            <div class="service-icon"><svg><use href="#icon-wrench"/></svg></div>
+            <h3>Mecánica general</h3>
+            <p>Mantenimiento preventivo y correctivo para mantener tu motor en óptimas condiciones.</p>
+            <ul>
+              <li><svg><use href="#icon-check"/></svg>Cambio de aceite y filtros</li>
+              <li><svg><use href="#icon-check"/></svg>Afinación de motor</li>
+              <li><svg><use href="#icon-check"/></svg>Suspensión y dirección</li>
+              <li><svg><use href="#icon-check"/></svg>Transmisión y embrague</li>
+            </ul>
+            <span class="service-num">01</span>
+          </article>
+
+          <article class="service-card reveal tilt" style="--d:.1s">
+            <div class="service-icon"><svg><use href="#icon-snow"/></svg></div>
+            <h3>Refrigeración</h3>
+            <p>Aire acondicionado y sistema de enfriamiento funcionando al 100%.</p>
+            <ul>
+              <li><svg><use href="#icon-check"/></svg>Recarga de gas A/C</li>
+              <li><svg><use href="#icon-check"/></svg>Compresores y condensadores</li>
+              <li><svg><use href="#icon-check"/></svg>Radiadores y mangueras</li>
+              <li><svg><use href="#icon-check"/></svg>Detección de fugas</li>
+            </ul>
+            <span class="service-num">02</span>
+          </article>
+
+          <article class="service-card reveal tilt" style="--d:.2s">
+            <div class="service-icon"><svg><use href="#icon-brake"/></svg></div>
+            <h3>Frenos</h3>
+            <p>Tu seguridad es primero. Revisión y reparación completa del sistema de frenado.</p>
+            <ul>
+              <li><svg><use href="#icon-check"/></svg>Pastillas y balatas</li>
+              <li><svg><use href="#icon-check"/></svg>Rectificado de discos</li>
+              <li><svg><use href="#icon-check"/></svg>Líquido de frenos</li>
+              <li><svg><use href="#icon-check"/></svg>Sistema ABS</li>
+            </ul>
+            <span class="service-num">03</span>
+          </article>
+
+          <article class="service-card reveal tilt" style="--d:.3s">
+            <div class="service-icon"><svg><use href="#icon-bolt"/></svg></div>
+            <h3>Electricidad</h3>
+            <p>Diagnóstico electrónico y reparación de todo el sistema eléctrico.</p>
+            <ul>
+              <li><svg><use href="#icon-check"/></svg>Diagnóstico por computadora</li>
+              <li><svg><use href="#icon-check"/></svg>Baterías y alternadores</li>
+              <li><svg><use href="#icon-check"/></svg>Marchas / arranque</li>
+              <li><svg><use href="#icon-check"/></svg>Luces y cableado</li>
+            </ul>
+            <span class="service-num">04</span>
+          </article>
         </div>
       </div>
     </section>
 
-    <section id="nosotros" class="alt">
-      <div class="container">
-        <h2>Nosotros</h2>
-        <p style="text-align:center; max-width:700px; margin:0 auto;">
-          Texto sobre Casa Nova Car Care LLC.
-        </p>
+    <!-- ===== Nosotros ===== -->
+    <section class="section section-alt" id="nosotros">
+      <div class="container about">
+        <div class="about-visual reveal from-left">
+          <div class="about-card">
+            <svg class="about-gear"><use href="#icon-gear"/></svg>
+            <div class="about-badge">
+              <strong data-count="100" data-suffix="%">0</strong>
+              <span>Compromiso con tu seguridad</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="about-text reveal from-right">
+          <p class="eyebrow">¿Por qué elegirnos?</p>
+          <h2>Mecánicos de confianza, <span class="accent">resultados reales</span></h2>
+          <p>
+            En Casa Nova Car Care tratamos cada vehículo como si fuera nuestro.
+            Te explicamos el problema con claridad, te damos un presupuesto antes de empezar
+            y solo hacemos lo que tu auto realmente necesita.
+          </p>
+
+          <div class="bars">
+            <div class="bar"><div class="bar-label"><span>Diagnóstico preciso</span><span>98%</span></div><div class="bar-track"><i style="--w:98%"></i></div></div>
+            <div class="bar"><div class="bar-label"><span>Entrega a tiempo</span><span>95%</span></div><div class="bar-track"><i style="--w:95%"></i></div></div>
+            <div class="bar"><div class="bar-label"><span>Precios justos</span><span>100%</span></div><div class="bar-track"><i style="--w:100%"></i></div></div>
+          </div>
+
+          <ul class="features">
+            <li><svg><use href="#icon-check"/></svg>Presupuesto sin compromiso</li>
+            <li><svg><use href="#icon-check"/></svg>Garantía en el trabajo</li>
+            <li><svg><use href="#icon-check"/></svg>Refacciones de calidad</li>
+            <li><svg><use href="#icon-check"/></svg>Equipo de diagnóstico moderno</li>
+          </ul>
+        </div>
       </div>
     </section>
 
-    <section id="contacto">
-      <div class="container contact-info">
-        <h2>Contacto</h2>
-        <p>Teléfono: (000) 000-0000</p>
-        <p>Correo: info@ejemplo.com</p>
-        <p>Zona de servicio: Ciudad, Estado</p>
+    <!-- ===== Proceso ===== -->
+    <section class="section" id="proceso">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="eyebrow">Cómo trabajamos</p>
+          <h2>Un proceso <span class="accent">simple y transparente</span></h2>
+        </div>
+
+        <div class="steps" id="steps">
+          <div class="steps-line"><i></i></div>
+          <div class="step reveal" style="--d:0s"><span class="step-num">1</span><h3>Agenda</h3><p>Llámanos o escríbenos por WhatsApp y reserva tu cita.</p></div>
+          <div class="step reveal" style="--d:.15s"><span class="step-num">2</span><h3>Diagnóstico</h3><p>Revisamos tu vehículo e identificamos el problema real.</p></div>
+          <div class="step reveal" style="--d:.3s"><span class="step-num">3</span><h3>Presupuesto</h3><p>Te explicamos todo y apruebas antes de empezar.</p></div>
+          <div class="step reveal" style="--d:.45s"><span class="step-num">4</span><h3>Entrega</h3><p>Reparamos, probamos y te entregamos tu auto listo.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Testimonios ===== -->
+    <!-- IMPORTANTE: reemplazar con reseñas reales de clientes antes de publicar -->
+    <section class="section section-alt" id="testimonios">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="eyebrow">Testimonios</p>
+          <h2>Lo que dicen <span class="accent">nuestros clientes</span></h2>
+        </div>
+
+        <div class="slider reveal" id="slider">
+          <div class="slides">
+            <figure class="slide is-active">
+              <div class="stars"><svg><use href="#icon-star"/></svg><svg><use href="#icon-star"/></svg><svg><use href="#icon-star"/></svg><svg><use href="#icon-star"/></svg><svg><use href="#icon-star"/></svg></div>
+              <blockquote>“Texto de reseña de ejemplo. Reemplazar con la opinión real de un cliente sobre el servicio de A/C.”</blockquote>
+              <figcaption><strong>Nombre del cliente</strong><span>Servicio de refrigeración</span></figcaption>
+            </figure>
+            <figure class="slide">
+              <div class="stars"><svg><use href="#icon-star"/></svg><svg><use href="#icon-star"/></svg><svg><use href="#icon-star"/></svg><svg><use href="#icon-star"/></svg><svg><use href="#icon-star"/></svg></div>
+              <blockquote>“Texto de reseña de ejemplo. Reemplazar con la opinión real de un cliente sobre el servicio de frenos.”</blockquote>
+              <figcaption><strong>Nombre del cliente</strong><span>Servicio de frenos</span></figcaption>
+            </figure>
+            <figure class="slide">
+              <div class="stars"><svg><use href="#icon-star"/></svg><svg><use href="#icon-star"/></svg><svg><use href="#icon-star"/></svg><svg><use href="#icon-star"/></svg><svg><use href="#icon-star"/></svg></div>
+              <blockquote>“Texto de reseña de ejemplo. Reemplazar con la opinión real de un cliente sobre electricidad automotriz.”</blockquote>
+              <figcaption><strong>Nombre del cliente</strong><span>Electricidad automotriz</span></figcaption>
+            </figure>
+          </div>
+          <div class="slider-dots" role="tablist" aria-label="Testimonios"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CTA ===== -->
+    <section class="cta">
+      <div class="container cta-inner reveal zoom">
+        <svg class="cta-gear"><use href="#icon-gear"/></svg>
+        <h2>¿Tu auto hace un ruido extraño o el A/C no enfría?</h2>
+        <p>No esperes a que el problema crezca. Agenda tu diagnóstico hoy.</p>
+        <div class="hero-actions">
+          <a href="#" class="btn btn-dark js-whatsapp"><svg><use href="#icon-whatsapp"/></svg> Escríbenos por WhatsApp</a>
+          <a href="#" class="btn btn-outline-dark js-phone"><svg><use href="#icon-phone"/></svg> Llamar ahora</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Contacto ===== -->
+    <section class="section" id="contacto">
+      <div class="container contact">
+        <div class="contact-info reveal from-left">
+          <p class="eyebrow">Contacto</p>
+          <h2>Visítanos o <span class="accent">agenda tu cita</span></h2>
+          <ul class="contact-list">
+            <li><span class="ci"><svg><use href="#icon-phone"/></svg></span><div><strong>Teléfono</strong><a href="#" class="js-phone js-phone-text">(000) 000-0000</a></div></li>
+            <li><span class="ci"><svg><use href="#icon-mail"/></svg></span><div><strong>Correo</strong><a href="#" class="js-email">info@ejemplo.com</a></div></li>
+            <li><span class="ci"><svg><use href="#icon-pin"/></svg></span><div><strong>Dirección</strong><span>Dirección del taller, Ciudad, Estado</span></div></li>
+            <li><span class="ci"><svg><use href="#icon-clock"/></svg></span><div><strong>Horario</strong><span>Lun – Vie: 8:00 – 18:00 · Sáb: 8:00 – 14:00</span></div></li>
+          </ul>
+        </div>
+
+        <form class="contact-form reveal from-right" id="contact-form" novalidate>
+          <h3>Solicita tu cita</h3>
+          <div class="field"><input type="text" id="f-name" name="nombre" placeholder=" " required><label for="f-name">Nombre</label></div>
+          <div class="field"><input type="tel" id="f-phone" name="telefono" placeholder=" " required><label for="f-phone">Teléfono</label></div>
+          <div class="field"><input type="text" id="f-car" name="vehiculo" placeholder=" "><label for="f-car">Vehículo (marca, modelo, año)</label></div>
+          <div class="field">
+            <select id="f-service" name="servicio" required>
+              <option value="" disabled selected hidden></option>
+              <option>Mecánica general</option>
+              <option>Refrigeración / A/C</option>
+              <option>Frenos</option>
+              <option>Electricidad</option>
+              <option>Otro / No estoy seguro</option>
+            </select>
+            <label for="f-service">Servicio</label>
+          </div>
+          <div class="field"><textarea id="f-msg" name="mensaje" rows="3" placeholder=" "></textarea><label for="f-msg">Cuéntanos qué le pasa a tu auto</label></div>
+          <button type="submit" class="btn btn-primary btn-block">Enviar por WhatsApp <svg><use href="#icon-whatsapp"/></svg></button>
+          <p class="form-note" id="form-note" role="status"></p>
+        </form>
       </div>
     </section>
   </main>
 
-  <footer>
-    <div class="container">
-      &copy; <span id="year"></span> Casa Nova Car Care LLC. Todos los derechos reservados.
+  <!-- ===== Pie ===== -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <a href="#inicio" class="brand">
+        <svg class="brand-icon"><use href="#icon-gear"/></svg>
+        <span class="brand-text">Casa Nova<small>Car Care LLC</small></span>
+      </a>
+      <nav class="footer-links" aria-label="Pie de página">
+        <a href="#servicios">Servicios</a>
+        <a href="#nosotros">Nosotros</a>
+        <a href="#proceso">Proceso</a>
+        <a href="#contacto">Contacto</a>
+      </nav>
+      <p>&copy; <span id="year"></span> Casa Nova Car Care LLC. Todos los derechos reservados.</p>
     </div>
   </footer>
 
-  <script>
-    document.getElementById("year").textContent = new Date().getFullYear();
-  </script>
+  <!-- Botones flotantes -->
+  <a href="#" class="fab-whatsapp js-whatsapp" aria-label="Escríbenos por WhatsApp"><svg><use href="#icon-whatsapp"/></svg></a>
+  <a href="#inicio" class="to-top" id="to-top" aria-label="Volver arriba"><svg><use href="#icon-arrow"/></svg></a>
+
+  <script src="js/main.js"></script>
 </body>
 </html>
