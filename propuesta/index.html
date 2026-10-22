@@ -104,7 +104,7 @@
     .vs-good li::before { content: "✓"; background: rgba(46, 204, 113, .15); color: var(--green); }
 
     /* Vista previa del sistema */
-    .demo { border-radius: 18px; overflow: hidden; border: 1px solid #2c2e35; background: #0b0c0f; box-shadow: 0 50px 100px -40px rgba(225, 6, 0, .45); }
+    .demo { margin: 0; border-radius: 18px; overflow: hidden; border: 1px solid #2c2e35; background: #0b0c0f; box-shadow: 0 50px 100px -40px rgba(225, 6, 0, .45); }
     .demo-bar { display: flex; align-items: center; gap: 8px; padding: 12px 16px; background: #15161a; border-bottom: 1px solid var(--border); }
     .demo-bar i { width: 11px; height: 11px; border-radius: 50%; background: #3a3c44; }
     .demo-bar i:first-child { background: #ff5f57; } .demo-bar i:nth-child(2) { background: #febc2e; } .demo-bar i:nth-child(3) { background: #28c840; }
@@ -121,7 +121,7 @@
     .kpi span { font-size: .7rem; letter-spacing: 1px; text-transform: uppercase; color: var(--muted); }
     .kpi strong { display: block; font: 800 1.7rem/1.1 var(--font-head); margin-top: 4px; }
     .kpi strong.r { color: var(--red-hi); }
-    .board { display: grid; grid-template-columns: repeat(4, minmax(170px, 1fr)); gap: 12px; overflow-x: auto; padding-bottom: 6px; }
+    .board { display: grid; grid-template-columns: repeat(4, minmax(170px, 1fr)); gap: 12px; overflow-x: auto; padding: 0 0 6px; border: 0; }
     .col h4 { min-height: 2.6em; display: flex; align-items: flex-end; justify-content: space-between; font: 700 .78rem var(--font-body); letter-spacing: 1px; text-transform: uppercase; color: var(--muted); margin-bottom: 10px; }
     .col h4 em { font-style: normal; padding: 1px 8px; border-radius: 999px; background: #22242a; color: #fff; }
     .car { padding: 12px; border-radius: 12px; background: var(--surface-2); border: 1px solid var(--border); border-left: 3px solid var(--c, var(--blue)); margin-bottom: 10px; font-size: .78rem; }
@@ -344,7 +344,7 @@
         <div class="sec-head reveal"><span class="sec-num">02</span><h2>Así se verá tu taller</h2></div>
         <p class="lead reveal">Un tablero en tiempo real con cada auto, en qué etapa está y cuánto tiempo lleva. Arrastra una tarjeta de una columna a otra y el sistema registra el cambio.</p>
 
-        <div class="demo reveal" aria-label="Vista previa ilustrativa del sistema">
+        <figure class="demo reveal" aria-label="Vista previa ilustrativa del sistema">
           <div class="demo-bar"><i></i><i></i><i></i><span>casanovacarcare.com/sistema</span></div>
           <div class="demo-body">
             <aside class="demo-side" aria-hidden="true">
@@ -365,7 +365,7 @@
                 <div class="kpi"><span>Facturado hoy</span><strong class="r">$1,240</strong></div>
                 <div class="kpi"><span>Tiempo promedio</span><strong>1 d 6 h</strong></div>
               </div>
-              <div class="board" tabindex="0" role="region" aria-label="Tablero de autos en el taller (ejemplo)">
+              <section class="board" tabindex="0" aria-label="Tablero de autos en el taller (ejemplo)">
                 <div class="col">
                   <h4>Diagnóstico <em>2</em></h4>
                   <div class="car" style="--c:#4c9aff"><strong>Toyota Camry 2018</strong><span class="plate">Placa ABC-1234 · Frenos</span><div class="row"><span class="chip">Mecánico: Luis</span><span class="timer" data-hours="3.2"></span></div></div>
@@ -385,11 +385,11 @@
                   <h4>Listo para entregar <em>1</em></h4>
                   <div class="car" style="--c:#2ecc71"><strong>Jeep Wrangler 2014</strong><span class="plate">Placa JPW-778 · Batería</span><div class="row"><span class="chip">Cliente avisado ✓</span><span class="timer" data-hours="5.5"></span></div></div>
                 </div>
-              </div>
+              </section>
               <p class="demo-note">Vista previa ilustrativa con datos de ejemplo. El diseño final se ajusta con el taller.</p>
             </div>
           </div>
-        </div>
+        </figure>
       </div>
     </section>
 
