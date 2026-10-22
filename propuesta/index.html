@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Propuesta: Sistema de gestión del taller | Casanova Car Care LLC</title>
+  <meta name="description" content="Propuesta de sistema de gestión, facturación y CRM para Casanova Car Care LLC.">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#07080a">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Casanova Car Care LLC">
+  <meta property="og:locale" content="es_US">
+  <meta property="og:url" content="https://casanovacarcare.com/propuesta/">
+  <meta property="og:title" content="Propuesta: Sistema de gestión del taller">
+  <meta property="og:description" content="Facturación, CRM de clientes, órdenes de servicio, garantías y control del taller en un solo sistema.">
+  <meta property="og:image" content="https://casanovacarcare.com/assets/og-image.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Propuesta: Sistema de gestión del taller">
+  <meta name="twitter:description" content="Facturación, CRM de clientes, órdenes de servicio, garantías y control del taller en un solo sistema.">
+  <meta name="twitter:image" content="https://casanovacarcare.com/assets/og-image.jpg">
+  <link rel="icon" type="image/png" href="../assets/favicon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --red: #e10600;
+      --red-hi: #ff2a2a;
+      --bg: #07080a;
+      --bg-2: #0d0e11;
+      --surface: #131418;
+      --surface-2: #1a1b20;
+      --border: #23252b;
+      --text: #ececee;
+      --muted: #9a9ca3;
+      --green: #2ecc71;
+      --amber: #f5a524;
+      --blue: #4c9aff;
+      --chrome: linear-gradient(180deg, #fff 0%, #e4e6ea 40%, #9298a2 52%, #d7dade 70%, #fff 100%);
+      --red-grad: linear-gradient(135deg, var(--red-hi), var(--red) 50%, #a30000);
+      --ease: cubic-bezier(.22, 1, .36, 1);
+      --font-head: "Barlow Condensed", "Arial Narrow", sans-serif;
+      --font-body: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; overflow-x: clip; }
+    body { font-family: var(--font-body); background: var(--bg); color: var(--text); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+    a { color: inherit; }
+    img, svg { display: block; }
+    ul, ol { list-style: none; }
+    h1, h2, h3 { font-family: var(--font-head); text-transform: uppercase; letter-spacing: .5px; line-height: 1.05; }
+    .wrap { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+    .chrome { background: var(--chrome); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+    .accent { color: var(--red-hi); }
+
+    /* ---------- Portada ---------- */
+    .cover { position: relative; overflow: hidden; padding: 72px 0 64px; background: radial-gradient(ellipse 70% 80% at 85% 15%, #1d0405, transparent 60%), var(--bg); border-bottom: 1px solid var(--border); }
+    .cover::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 1px; background: linear-gradient(90deg, transparent, var(--red-hi), transparent); }
+    .cover-grid { display: grid; grid-template-columns: 1fr auto; gap: 40px; align-items: center; }
+    .cover-logo { width: 180px; height: auto; filter: drop-shadow(0 20px 40px rgba(225, 6, 0, .35)); animation: float 6s ease-in-out infinite; }
+    .tag { display: inline-flex; padding: 6px 14px; border-radius: 999px; border: 1px solid rgba(255, 42, 42, .35); background: rgba(225, 6, 0, .1); color: var(--red-hi); font-size: .78rem; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 18px; }
+    .cover h1 { font-size: clamp(2.5rem, 6.4vw, 4.4rem); font-weight: 800; margin-bottom: 16px; }
+    .cover p { color: var(--muted); max-width: 600px; font-size: 1.05rem; }
+    .meta { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 34px; }
+    .meta div { padding: 14px 16px; border-radius: 12px; background: rgba(255, 255, 255, .03); border: 1px solid var(--border); }
+    .meta span { display: block; font-size: .72rem; letter-spacing: 1.5px; text-transform: uppercase; color: var(--muted); }
+    .meta strong { font-weight: 600; font-size: .95rem; }
+    .meta .meta-price strong { font: 800 1.6rem/1.1 var(--font-head); color: var(--red-hi); }
+    .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 12px 22px; border-radius: 999px; font: 600 .9rem var(--font-body); color: #fff; text-decoration: none; border: 2px solid transparent; cursor: pointer; background: none; transition: transform .3s var(--ease), box-shadow .3s, border-color .3s; }
+    .btn svg { width: 17px; height: 17px; flex: none; }
+    .btn-primary { background: var(--red-grad); box-shadow: 0 10px 28px -10px var(--red-hi); }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 14px 34px -10px var(--red-hi); }
+    .btn-ghost { background: rgba(255, 255, 255, .03); border-color: rgba(255, 255, 255, .2); }
+    .btn-ghost:hover { border-color: var(--red-hi); }
+
+    /* ---------- Índice ---------- */
+    .toc { position: sticky; top: 0; z-index: 10; background: rgba(7, 8, 10, .85); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); }
+    .toc .wrap { display: flex; gap: 6px; overflow-x: auto; padding-top: 10px; padding-bottom: 10px; scrollbar-width: none; }
+    .toc .wrap::-webkit-scrollbar { display: none; }
+    .toc a { flex: none; padding: 7px 14px; border-radius: 999px; font-size: .85rem; color: var(--muted); text-decoration: none; transition: color .3s, background .3s; }
+    .toc a:hover, .toc a.is-active { color: #fff; background: rgba(225, 6, 0, .18); }
+
+    /* ---------- Secciones ---------- */
+    section { padding: 72px 0; border-bottom: 1px solid var(--border); scroll-margin-top: 56px; }
+    .sec-head { display: flex; align-items: baseline; gap: 16px; margin-bottom: 14px; }
+    .sec-num { font: 800 1rem var(--font-head); color: var(--red-hi); letter-spacing: 2px; }
+    .sec-head h2 { font-size: clamp(1.9rem, 4.5vw, 2.8rem); font-weight: 800; }
+    .lead { color: var(--muted); margin-bottom: 34px; max-width: 760px; font-size: 1.02rem; }
+
+    /* Problema / solución */
+    .vs { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .vs-col { padding: 26px; border-radius: 18px; border: 1px solid var(--border); background: var(--surface); }
+    .vs-col h3 { font-size: 1.4rem; margin-bottom: 16px; display: flex; align-items: center; gap: 10px; }
+    .vs-col li { position: relative; padding: 7px 0 7px 30px; font-size: .94rem; color: #cfd1d6; border-bottom: 1px dashed rgba(255, 255, 255, .06); }
+    .vs-col li:last-child { border-bottom: 0; }
+    .vs-col li::before { position: absolute; left: 0; top: 7px; width: 20px; height: 20px; border-radius: 50%; display: grid; place-items: center; font-size: .72rem; font-weight: 700; }
+    .vs-bad li::before { content: "✕"; background: rgba(255, 42, 42, .15); color: var(--red-hi); }
+    .vs-good { border-color: rgba(46, 204, 113, .35); background: linear-gradient(180deg, rgba(46, 204, 113, .06), var(--surface)); }
+    .vs-good li::before { content: "✓"; background: rgba(46, 204, 113, .15); color: var(--green); }
+
+    /* Vista previa del sistema */
+    .demo { border-radius: 18px; overflow: hidden; border: 1px solid #2c2e35; background: #0b0c0f; box-shadow: 0 50px 100px -40px rgba(225, 6, 0, .45); }
+    .demo-bar { display: flex; align-items: center; gap: 8px; padding: 12px 16px; background: #15161a; border-bottom: 1px solid var(--border); }
+    .demo-bar i { width: 11px; height: 11px; border-radius: 50%; background: #3a3c44; }
+    .demo-bar i:first-child { background: #ff5f57; } .demo-bar i:nth-child(2) { background: #febc2e; } .demo-bar i:nth-child(3) { background: #28c840; }
+    .demo-bar span { margin-left: 12px; padding: 4px 14px; border-radius: 8px; background: #0b0c0f; font-size: .75rem; color: var(--muted); }
+    .demo-body { display: grid; grid-template-columns: 190px 1fr; min-height: 470px; }
+    .demo-side { padding: 18px 12px; background: #101115; border-right: 1px solid var(--border); }
+    .demo-side img { width: 46px; height: auto; margin: 0 0 18px 8px; }
+    .demo-side a { display: flex; align-items: center; gap: 10px; padding: 9px 12px; border-radius: 10px; font-size: .82rem; color: var(--muted); text-decoration: none; }
+    .demo-side a.on { background: rgba(225, 6, 0, .16); color: #fff; }
+    .demo-side a b { width: 7px; height: 7px; border-radius: 50%; background: currentColor; opacity: .6; }
+    .demo-main { padding: 20px; min-width: 0; }
+    .kpis { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 18px; }
+    .kpi { padding: 14px; border-radius: 12px; background: var(--surface); border: 1px solid var(--border); }
+    .kpi span { font-size: .7rem; letter-spacing: 1px; text-transform: uppercase; color: var(--muted); }
+    .kpi strong { display: block; font: 800 1.7rem/1.1 var(--font-head); margin-top: 4px; }
+    .kpi strong.r { color: var(--red-hi); }
+    .board { display: grid; grid-template-columns: repeat(4, minmax(170px, 1fr)); gap: 12px; overflow-x: auto; padding-bottom: 6px; }
+    .col h4 { min-height: 2.6em; display: flex; align-items: flex-end; justify-content: space-between; font: 700 .78rem var(--font-body); letter-spacing: 1px; text-transform: uppercase; color: var(--muted); margin-bottom: 10px; }
+    .col h4 em { font-style: normal; padding: 1px 8px; border-radius: 999px; background: #22242a; color: #fff; }
+    .car { padding: 12px; border-radius: 12px; background: var(--surface-2); border: 1px solid var(--border); border-left: 3px solid var(--c, var(--blue)); margin-bottom: 10px; font-size: .78rem; }
+    .car strong { display: block; font-size: .86rem; }
+    .car .plate { color: var(--muted); }
+    .car .row { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; margin-top: 8px; gap: 6px; }
+    .chip { padding: 2px 8px; border-radius: 999px; background: rgba(255, 255, 255, .06); font-size: .7rem; white-space: nowrap; }
+    .timer { font-variant-numeric: tabular-nums; color: #fff; font-weight: 600; white-space: nowrap; }
+    .timer.late { color: var(--red-hi); }
+    .demo-note { margin-top: 12px; font-size: .78rem; color: var(--muted); text-align: center; }
+
+    /* Módulos */
+    .mods { display: grid; grid-template-columns: repeat(auto-fit, minmax(310px, 1fr)); gap: 16px; }
+    .mod { position: relative; padding: 26px; border-radius: 18px; background: linear-gradient(180deg, var(--surface-2), var(--surface)); border: 1px solid var(--border); transition: border-color .4s, transform .4s var(--ease); }
+    .mod:hover { border-color: rgba(255, 42, 42, .4); transform: translateY(-3px); }
+    .mod-icon { width: 50px; height: 50px; border-radius: 14px; display: grid; place-items: center; background: rgba(225, 6, 0, .12); border: 1px solid rgba(255, 42, 42, .22); color: var(--red-hi); margin-bottom: 18px; }
+    .mod-icon svg { width: 24px; height: 24px; }
+    .mod-num { position: absolute; top: 20px; right: 22px; font: 800 2.6rem/1 var(--font-head); color: rgba(255, 255, 255, .05); }
+    .mod h3 { font-size: 1.45rem; margin-bottom: 8px; }
+    .mod > p { color: var(--muted); font-size: .9rem; margin-bottom: 14px; }
+    .list li { position: relative; padding: 5px 0 5px 24px; font-size: .9rem; color: #cfd1d6; }
+    .list li::before { content: ""; position: absolute; left: 2px; top: 12px; width: 11px; height: 6px; border-left: 2px solid var(--red-hi); border-bottom: 2px solid var(--red-hi); transform: rotate(-45deg); }
+    .badge { display: inline-block; margin-left: 6px; padding: 1px 8px; border-radius: 999px; font: 600 .66rem var(--font-body); letter-spacing: .5px; text-transform: uppercase; vertical-align: 3px; background: rgba(76, 154, 255, .15); color: var(--blue); }
+
+    /* Flujo */
+    .flow { counter-reset: f; display: grid; grid-template-columns: repeat(6, 1fr); gap: 10px; }
+    .flow li { counter-increment: f; position: relative; padding: 18px 14px; border-radius: 14px; background: var(--surface); border: 1px solid var(--border); text-align: center; font-size: .85rem; color: #cfd1d6; }
+    .flow li::before { content: counter(f); display: grid; place-items: center; width: 34px; height: 34px; margin: 0 auto 10px; border-radius: 50%; background: var(--red-grad); color: #fff; font: 800 1.05rem var(--font-head); }
+    .flow strong { display: block; color: #fff; font: 700 1.05rem var(--font-head); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 4px; }
+
+    /* Beneficios */
+    .benefits { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+    .benefit { padding: 22px; border-radius: 16px; background: var(--surface); border: 1px solid var(--border); }
+    .benefit strong { display: block; font: 800 1.35rem/1.1 var(--font-head); text-transform: uppercase; margin-bottom: 6px; }
+    .benefit p { color: var(--muted); font-size: .88rem; }
+
+    /* Tabla */
+    .table { width: 100%; border-collapse: separate; border-spacing: 0; border: 1px solid var(--border); border-radius: 14px; overflow: hidden; font-size: .92rem; }
+    .table th, .table td { text-align: left; padding: 14px 18px; border-bottom: 1px solid var(--border); vertical-align: top; }
+    .table tr:last-child th, .table tr:last-child td { border-bottom: 0; }
+    .table thead th { font: 700 .95rem var(--font-head); letter-spacing: 1.5px; text-transform: uppercase; background: rgba(225, 6, 0, .12); }
+    .table tbody th { width: 30%; font-weight: 600; color: #fff; background: rgba(255, 255, 255, .02); }
+    .table td { color: #cfd1d6; }
+    .table-scroll { overflow-x: auto; }
+    .table-scroll .table { min-width: 560px; }
+
+    /* Inversión */
+    .invest { display: grid; grid-template-columns: 1.1fr .9fr; gap: 20px; align-items: stretch; }
+    .price-card { position: relative; overflow: hidden; padding: 36px; border-radius: 22px; background: repeating-linear-gradient(-45deg, rgba(0, 0, 0, .07) 0 14px, transparent 14px 28px), var(--red-grad); box-shadow: 0 40px 80px -30px rgba(225, 6, 0, .55); }
+    .price-card span { font-size: .8rem; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; opacity: .9; }
+    .price { display: flex; align-items: flex-start; gap: 6px; margin: 8px 0 6px; font: 800 6rem/1 var(--font-head); }
+    .price small { font-size: 2.4rem; margin-top: 10px; }
+    .price-card p { font-weight: 500; opacity: .95; }
+    .price-card ul { margin-top: 20px; display: grid; gap: 8px; }
+    .price-card li { display: flex; gap: 10px; font-size: .92rem; }
+    .price-card li::before { content: "✓"; flex: none; width: 20px; height: 20px; border-radius: 50%; display: grid; place-items: center; background: rgba(0, 0, 0, .25); font-size: .72rem; font-weight: 700; }
+    .terms { padding: 28px; border-radius: 22px; background: var(--surface); border: 1px solid var(--border); }
+    .terms h3 { font-size: 1.3rem; margin-bottom: 12px; }
+    .terms h3:not(:first-child) { margin-top: 22px; }
+    .terms li { position: relative; padding: 5px 0 5px 20px; font-size: .9rem; color: #cfd1d6; }
+    .terms li::before { content: "•"; position: absolute; left: 4px; color: var(--red-hi); font-weight: 700; }
+
+    /* Aceptación */
+    .accept { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 10px; }
+    .sign-box { padding: 26px; border-radius: 18px; background: var(--surface); border: 1px solid var(--border); }
+    .sign-box h3 { font-size: 1.2rem; margin-bottom: 4px; }
+    .sign-box p { color: var(--muted); font-size: .85rem; margin-bottom: 22px; }
+    .line { border-bottom: 1px solid #3a3c44; height: 38px; margin-bottom: 4px; }
+    .line-label { font-size: .75rem; color: var(--muted); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 14px; }
+
+    .note { margin-top: 20px; padding: 16px 18px; border-radius: 14px; border-left: 3px solid var(--red-hi); background: rgba(225, 6, 0, .07); font-size: .88rem; color: #d6d8dc; }
+
+    .sign { padding: 64px 0 80px; text-align: center; }
+    .sign img { width: 90px; margin: 0 auto 18px; }
+    .sign h2 { font-size: 2rem; margin-bottom: 8px; }
+    .sign p { color: var(--muted); font-size: .92rem; }
+    .credits { margin-top: 18px; }
+    .credits a { color: #fff; font-weight: 600; text-decoration: none; border-bottom: 1px solid var(--red-hi); }
+
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity .8s var(--ease), transform .8s var(--ease); }
+    .reveal.is-visible { opacity: 1; transform: none; }
+    @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+
+    @media (max-width: 900px) {
+      .flow { grid-template-columns: repeat(3, 1fr); }
+      .benefits { grid-template-columns: 1fr 1fr; }
+      .invest, .vs, .accept { grid-template-columns: 1fr; }
+      .demo-body { grid-template-columns: 1fr; }
+      .demo-side { display: none; }
+      .kpis { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 700px) {
+      .cover { padding: 48px 0; }
+      .cover-grid { grid-template-columns: 1fr; text-align: center; }
+      .cover-logo { width: 140px; margin: 0 auto; order: -1; }
+      .cover p { margin: 0 auto; }
+      .meta { grid-template-columns: 1fr 1fr; text-align: left; }
+      .actions { justify-content: center; }
+      .flow { grid-template-columns: 1fr 1fr; }
+      .benefits { grid-template-columns: 1fr; }
+      .price { font-size: 4.6rem; }
+      .price-card, .terms { padding: 26px 22px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation: none !important; transition: none !important; }
+      .reveal { opacity: 1; transform: none; }
+    }
+
+    /* Imprimir / PDF */
+    @media print {
+      :root { --bg: #fff; --bg-2: #fff; --surface: #fff; --surface-2: #fff; --border: #d9d9de; --text: #111; --muted: #555; }
+      body { background: #fff; color: #111; }
+      .toc, .actions, .demo-wrap { display: none !important; }
+      .cover { background: #fff; padding: 24px 0; }
+      .chrome { -webkit-text-fill-color: #111; background: none; }
+      .mod, .vs-col, .benefit, .flow li, .sign-box, .terms { break-inside: avoid; background: #fff; }
+      .list li, .vs-col li, .terms li, .flow li, .table td { color: #222; }
+      .flow strong, .table tbody th, .credits a { color: #111; }
+      .price-card { color: #fff; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      .reveal { opacity: 1 !important; transform: none !important; }
+      .cover-logo { animation: none; filter: none; }
+      section { padding: 28px 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+      <symbol id="i-print" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M6 9V3h12v6M6 18H4v-7h16v7h-2"/><path d="M6 14h12v7H6z"/></g></symbol>
+      <symbol id="i-arrow" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M13 6l6 6-6 6"/></symbol>
+      <symbol id="i-clip" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 4V3h6v1M9 10h6M9 14h6M9 18h3"/></g></symbol>
+      <symbol id="i-users" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0"/><path d="M16 4.5a3.5 3.5 0 0 1 0 7M18 14.5a6.5 6.5 0 0 1 3.5 5.5"/></g></symbol>
+      <symbol id="i-invoice" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2.5h12v19l-3-2-3 2-3-2-3 2z"/><path d="M9 8h6M9 12h6M9 16h3"/></g></symbol>
+      <symbol id="i-shield" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" d="M12 2.5l8 3v6c0 5-3.4 8.6-8 10-4.6-1.4-8-5-8-10v-6z M8.5 12l2.5 2.5 4.5-5"/></symbol>
+      <symbol id="i-board" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><rect x="3" y="4" width="5" height="16" rx="1.5"/><rect x="9.5" y="4" width="5" height="11" rx="1.5"/><rect x="16" y="4" width="5" height="7" rx="1.5"/></g></symbol>
+      <symbol id="i-box" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M3 7.5L12 3l9 4.5v9L12 21l-9-4.5z"/><path d="M3 7.5l9 4.5 9-4.5M12 12v9"/></g></symbol>
+      <symbol id="i-bell" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 16V11a6 6 0 0 1 12 0v5l2 2H4z"/><path d="M10 20a2 2 0 0 0 4 0"/></g></symbol>
+      <symbol id="i-chart" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 20h18"/><path d="M6 16v-4M10 16V8M14 16v-6M18 16V5"/></g></symbol>
+      <symbol id="i-image" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="M21 16l-5-5-9 9"/></g></symbol>
+      <symbol id="i-ads" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"><path d="M3 10v4h3l6 4V6L6 10z"/><path d="M16 9a4 4 0 0 1 0 6M18.5 6.5a7.5 7.5 0 0 1 0 11"/></g></symbol>
+      <symbol id="i-lock" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></g></symbol>
+      <symbol id="i-car" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M4 16v-4l2-5h12l2 5v4z"/><circle cx="7.5" cy="16.5" r="1.8"/><circle cx="16.5" cy="16.5" r="1.8"/><path d="M4 12h16"/></g></symbol>
+    </defs>
+  </svg>
+
+  <!-- ===== Portada ===== -->
+  <header class="cover">
+    <div class="wrap cover-grid">
+      <div>
+        <span class="tag">Propuesta comercial</span>
+        <h1><span class="chrome">Sistema de gestión</span><br><span class="accent">para tu taller</span></h1>
+        <p>Un programa completo, hecho a la medida de Casanova Car Care, para controlar cada auto desde que entra hasta que sale: clientes, órdenes de servicio, facturas, garantías y reportes, todo en un solo lugar y desde cualquier dispositivo.</p>
+
+        <div class="meta">
+          <div><span>Preparada para</span><strong>Casanova Car Care LLC</strong></div>
+          <div><span>Preparada por</span><strong>DGP Global Group &amp; AVA Multiservices</strong></div>
+          <div><span>Fecha</span><strong>22 de octubre de 2026</strong></div>
+          <div class="meta-price"><span>Inversión</span><strong>$570 USD</strong></div>
+        </div>
+
+        <div class="actions">
+          <a class="btn btn-primary" href="#inversion">Ver inversión <svg><use href="#i-arrow"/></svg></a>
+          <button class="btn btn-ghost" type="button" onclick="window.print()"><svg><use href="#i-print"/></svg> Imprimir / Guardar PDF</button>
+        </div>
+      </div>
+      <img class="cover-logo" src="../assets/logo.webp" alt="Logo de Casanova Car Care LLC" width="720" height="746">
+    </div>
+  </header>
+
+  <nav class="toc" aria-label="Contenido">
+    <div class="wrap">
+      <a href="#reto">El reto</a>
+      <a href="#vista">Vista previa</a>
+      <a href="#modulos">Módulos</a>
+      <a href="#flujo">Cómo funciona</a>
+      <a href="#beneficios">Beneficios</a>
+      <a href="#plan">Plan de trabajo</a>
+      <a href="#inversion">Inversión</a>
+      <a href="#aceptacion">Aceptación</a>
+    </div>
+  </nav>
+
+  <main>
+    <!-- ===== 01 El reto ===== -->
+    <section id="reto">
+      <div class="wrap">
+        <div class="sec-head reveal"><span class="sec-num">01</span><h2>El reto de todo taller</h2></div>
+        <p class="lead reveal">Con varios autos al mismo tiempo, el control en papel, libretas o chats de WhatsApp se vuelve difícil. Este sistema reemplaza ese desorden por un proceso claro y automático.</p>
+        <div class="vs">
+          <div class="vs-col vs-bad reveal">
+            <h3>Hoy, sin sistema</h3>
+            <ul>
+              <li>Notas sueltas y facturas hechas a mano</li>
+              <li>No se sabe cuánto tiempo lleva cada auto en el taller</li>
+              <li>Difícil encontrar el historial de un cliente o vehículo</li>
+              <li>Garantías sin registro: discusiones con el cliente</li>
+              <li>Llamadas constantes de clientes preguntando "¿ya está mi carro?"</li>
+              <li>No hay números claros de cuánto se vende al mes</li>
+            </ul>
+          </div>
+          <div class="vs-col vs-good reveal">
+            <h3>Con el sistema</h3>
+            <ul>
+              <li>Órdenes y facturas digitales con el logo del taller</li>
+              <li>Fecha y hora de entrada y salida, y tiempo en taller automático</li>
+              <li>Historial completo por cliente, placa o VIN en segundos</li>
+              <li>Garantía registrada por servicio, con certificado y fecha de vencimiento</li>
+              <li>El cliente recibe el estado de su auto por WhatsApp</li>
+              <li>Reportes de ingresos, servicios y clientes al instante</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 02 Vista previa ===== -->
+    <section id="vista" class="demo-wrap">
+      <div class="wrap">
+        <div class="sec-head reveal"><span class="sec-num">02</span><h2>Así se verá tu taller</h2></div>
+        <p class="lead reveal">Un tablero en tiempo real con cada auto, en qué etapa está y cuánto tiempo lleva. Arrastra una tarjeta de una columna a otra y el sistema registra el cambio.</p>
+
+        <div class="demo reveal" aria-label="Vista previa ilustrativa del sistema">
+          <div class="demo-bar"><i></i><i></i><i></i><span>casanovacarcare.com/sistema</span></div>
+          <div class="demo-body">
+            <aside class="demo-side" aria-hidden="true">
+              <img src="../assets/logo-sm.webp" alt="" width="160" height="166">
+              <a class="on"><b></b>Tablero</a>
+              <a><b></b>Órdenes</a>
+              <a><b></b>Clientes</a>
+              <a><b></b>Vehículos</a>
+              <a><b></b>Facturas</a>
+              <a><b></b>Garantías</a>
+              <a><b></b>Piezas</a>
+              <a><b></b>Reportes</a>
+            </aside>
+            <div class="demo-main">
+              <div class="kpis">
+                <div class="kpi"><span>Autos en taller</span><strong>7</strong></div>
+                <div class="kpi"><span>Listos hoy</span><strong>3</strong></div>
+                <div class="kpi"><span>Facturado hoy</span><strong class="r">$1,240</strong></div>
+                <div class="kpi"><span>Tiempo promedio</span><strong>1 d 6 h</strong></div>
+              </div>
+              <div class="board" tabindex="0" role="region" aria-label="Tablero de autos en el taller (ejemplo)">
+                <div class="col">
+                  <h4>Diagnóstico <em>2</em></h4>
+                  <div class="car" style="--c:#4c9aff"><strong>Toyota Camry 2018</strong><span class="plate">Placa ABC-1234 · Frenos</span><div class="row"><span class="chip">Mecánico: Luis</span><span class="timer" data-hours="3.2"></span></div></div>
+                  <div class="car" style="--c:#4c9aff"><strong>Honda Civic 2016</strong><span class="plate">Placa KXT-552 · Check Engine</span><div class="row"><span class="chip">Escáner</span><span class="timer" data-hours="1.1"></span></div></div>
+                </div>
+                <div class="col">
+                  <h4>Esperando aprobación <em>1</em></h4>
+                  <div class="car" style="--c:#f5a524"><strong>Ford F-150 2019</strong><span class="plate">Placa TXR-908 · A/C</span><div class="row"><span class="chip">Presupuesto enviado</span><span class="timer" data-hours="20"></span></div></div>
+                </div>
+                <div class="col">
+                  <h4>En reparación <em>3</em></h4>
+                  <div class="car" style="--c:#ff2a2a"><strong>Nissan Altima 2015</strong><span class="plate">Placa LMN-447 · Alternador</span><div class="row"><span class="chip">Esperando pieza</span><span class="timer" data-hours="52"></span></div></div>
+                  <div class="car" style="--c:#ff2a2a"><strong>Chevrolet Silverado 2020</strong><span class="plate">Placa DFW-310 · Suspensión</span><div class="row"><span class="chip">Mecánico: Carlos</span><span class="timer" data-hours="27"></span></div></div>
+                  <div class="car" style="--c:#ff2a2a"><strong>Hyundai Elantra 2017</strong><span class="plate">Placa IRV-221 · Aceite</span><div class="row"><span class="chip">Mecánico: Luis</span><span class="timer" data-hours="0.6"></span></div></div>
+                </div>
+                <div class="col">
+                  <h4>Listo para entregar <em>1</em></h4>
+                  <div class="car" style="--c:#2ecc71"><strong>Jeep Wrangler 2014</strong><span class="plate">Placa JPW-778 · Batería</span><div class="row"><span class="chip">Cliente avisado ✓</span><span class="timer" data-hours="5.5"></span></div></div>
+                </div>
+              </div>
+              <p class="demo-note">Vista previa ilustrativa con datos de ejemplo. El diseño final se ajusta con el taller.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 03 Módulos ===== -->
+    <section id="modulos">
+      <div class="wrap">
+        <div class="sec-head reveal"><span class="sec-num">03</span><h2>Qué incluye el sistema</h2></div>
+        <p class="lead reveal">Doce módulos conectados entre sí. Todo lo que se registra en uno se usa en los demás, sin escribir dos veces lo mismo.</p>
+
+        <div class="mods">
+          <article class="mod reveal"><span class="mod-num">01</span><div class="mod-icon"><svg><use href="#i-clip"/></svg></div>
+            <h3>Órdenes de servicio</h3>
+            <p>El corazón del taller: cada auto que entra tiene su orden digital.</p>
+            <ul class="list">
+              <li>Fecha y hora de entrada y salida automáticas</li>
+              <li>Kilometraje, nivel de combustible y fotos del estado del auto al recibirlo</li>
+              <li>Falla reportada por el cliente y diagnóstico del mecánico</li>
+              <li>Mecánico asignado y notas internas</li>
+              <li>Etapas: diagnóstico, aprobación, piezas, reparación, listo y entregado</li>
+            </ul>
+          </article>
+
+          <article class="mod reveal"><span class="mod-num">02</span><div class="mod-icon"><svg><use href="#i-board"/></svg></div>
+            <h3>Tablero del taller</h3>
+            <p>Todos los autos del taller de un vistazo, en tiempo real.</p>
+            <ul class="list">
+              <li>Columnas por etapa, se mueven arrastrando</li>
+              <li>Contador de tiempo de cada auto en el taller</li>
+              <li>Alerta en rojo cuando un auto pasa del tiempo límite</li>
+              <li>Filtro por mecánico, servicio o fecha</li>
+            </ul>
+          </article>
+
+          <article class="mod reveal"><span class="mod-num">03</span><div class="mod-icon"><svg><use href="#i-users"/></svg></div>
+            <h3>CRM de clientes y vehículos</h3>
+            <p>Toda la información de cada cliente, organizada y a la mano.</p>
+            <ul class="list">
+              <li>Ficha del cliente con teléfono, correo y notas</li>
+              <li>Varios vehículos por cliente (marca, modelo, año, placa, VIN)</li>
+              <li>Historial completo de servicios y facturas por vehículo</li>
+              <li>Búsqueda rápida por nombre, teléfono, placa o VIN</li>
+              <li>Clientes frecuentes y última visita</li>
+            </ul>
+          </article>
+
+          <article class="mod reveal"><span class="mod-num">04</span><div class="mod-icon"><svg><use href="#i-invoice"/></svg></div>
+            <h3>Presupuestos y facturación</h3>
+            <p>Del presupuesto a la factura en un clic.</p>
+            <ul class="list">
+              <li>Presupuestos con mano de obra y piezas</li>
+              <li>Aprobación del cliente por enlace (queda registrada)</li>
+              <li>El presupuesto aprobado se convierte en factura</li>
+              <li>Impuestos configurables, descuentos y anticipos</li>
+              <li>Pagos parciales, métodos de pago y saldo pendiente</li>
+              <li>Factura en PDF con el logo, lista para enviar por WhatsApp o correo</li>
+            </ul>
+          </article>
+
+          <article class="mod reveal"><span class="mod-num">05</span><div class="mod-icon"><svg><use href="#i-shield"/></svg></div>
+            <h3>Garantías por servicio</h3>
+            <p>Cada trabajo con su garantía registrada, sin discusiones.</p>
+            <ul class="list">
+              <li>Garantía por días o millas, según el servicio</li>
+              <li>Certificado de garantía en PDF para el cliente</li>
+              <li>Consulta inmediata por placa: ¿está en garantía?</li>
+              <li>Registro de reclamos de garantía</li>
+              <li>Aviso de garantías por vencer</li>
+            </ul>
+          </article>
+
+          <article class="mod reveal"><span class="mod-num">06</span><div class="mod-icon"><svg><use href="#i-bell"/></svg></div>
+            <h3>Avisos y recordatorios</h3>
+            <p>Mensajes listos para enviar por WhatsApp con un solo toque.</p>
+            <ul class="list">
+              <li>"Recibimos tu auto", "Tu presupuesto está listo", "Tu auto está listo"</li>
+              <li>Enlace de seguimiento para que el cliente vea el estado de su auto</li>
+              <li>Recordatorio de próximo cambio de aceite por fecha o millaje</li>
+              <li>Lista diaria de clientes a contactar</li>
+            </ul>
+          </article>
+
+          <article class="mod reveal"><span class="mod-num">07</span><div class="mod-icon"><svg><use href="#i-box"/></svg></div>
+            <h3>Piezas y costos</h3>
+            <p>Saber cuánto cuesta y cuánto deja cada trabajo.</p>
+            <ul class="list">
+              <li>Piezas usadas en cada orden, con costo y precio de venta</li>
+              <li>Ganancia por orden de servicio</li>
+              <li>Registro de proveedores</li>
+              <li>Control básico de piezas en existencia</li>
+            </ul>
+          </article>
+
+          <article class="mod reveal"><span class="mod-num">08</span><div class="mod-icon"><svg><use href="#i-chart"/></svg></div>
+            <h3>Reportes</h3>
+            <p>Los números del negocio, claros y al instante.</p>
+            <ul class="list">
+              <li>Ingresos por día, semana y mes</li>
+              <li>Servicios más vendidos</li>
+              <li>Tiempo promedio de cada auto en el taller</li>
+              <li>Trabajo por mecánico</li>
+              <li>Facturas pendientes de cobro</li>
+              <li>Exportar a Excel</li>
+            </ul>
+          </article>
+
+          <article class="mod reveal"><span class="mod-num">09</span><div class="mod-icon"><svg><use href="#i-lock"/></svg></div>
+            <h3>Usuarios y permisos</h3>
+            <p>Cada persona ve solo lo que necesita.</p>
+            <ul class="list">
+              <li>Roles: dueño, recepción y mecánico</li>
+              <li>El mecánico ve sus órdenes asignadas desde el celular</li>
+              <li>Registro de quién hizo cada cambio</li>
+              <li>Acceso seguro con usuario y contraseña</li>
+            </ul>
+          </article>
+
+          <article class="mod reveal"><span class="mod-num">10</span><div class="mod-icon"><svg><use href="#i-car"/></svg></div>
+            <h3>Funciona en todo dispositivo</h3>
+            <p>Sin instalar nada: se abre desde el navegador.</p>
+            <ul class="list">
+              <li>Computadora, tableta y celular</li>
+              <li>Se puede agregar a la pantalla de inicio como una app</li>
+              <li>Datos en la nube con respaldos automáticos</li>
+              <li>Conexión segura (HTTPS)</li>
+            </ul>
+          </article>
+
+          <article class="mod reveal"><span class="mod-num">11</span><div class="mod-icon"><svg><use href="#i-image"/></svg></div>
+            <h3>Diseños para redes</h3>
+            <p>Más contenido para la sección Multimedia.</p>
+            <ul class="list">
+              <li>10 diseños nuevos para Instagram y Facebook (posts e historias)</li>
+              <li>Con texto y hashtags listos para publicar</li>
+              <li>Publicados en la página /multimedia para descargar</li>
+            </ul>
+          </article>
+
+          <article class="mod reveal"><span class="mod-num">12</span><div class="mod-icon"><svg><use href="#i-ads"/></svg></div>
+            <h3>Conexión con Facebook Ads <span class="badge">Si lo necesita</span></h3>
+            <p>Preparado para anunciarse en Facebook e Instagram.</p>
+            <ul class="list">
+              <li>Instalación del Píxel de Meta en el sitio web</li>
+              <li>Medición de contactos: llamadas, WhatsApp y formulario</li>
+              <li>Configuración de la cuenta publicitaria</li>
+              <li>Audiencias de clientes en Irving y alrededores</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 04 Flujo ===== -->
+    <section id="flujo">
+      <div class="wrap">
+        <div class="sec-head reveal"><span class="sec-num">04</span><h2>El recorrido de cada auto</h2></div>
+        <p class="lead reveal">Así queda registrado cada servicio, de principio a fin, sin papeles.</p>
+        <ol class="flow reveal">
+          <li><strong>Recepción</strong>Se crea la orden con fotos, kilometraje y hora de entrada.</li>
+          <li><strong>Diagnóstico</strong>El mecánico registra la falla encontrada.</li>
+          <li><strong>Presupuesto</strong>El cliente lo aprueba desde su celular.</li>
+          <li><strong>Reparación</strong>Piezas y mano de obra quedan registradas.</li>
+          <li><strong>Factura</strong>Se genera con la garantía incluida.</li>
+          <li><strong>Entrega</strong>Hora de salida y aviso al cliente por WhatsApp.</li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ===== 05 Beneficios ===== -->
+    <section id="beneficios">
+      <div class="wrap">
+        <div class="sec-head reveal"><span class="sec-num">05</span><h2>Lo que gana el taller</h2></div>
+        <div class="benefits">
+          <div class="benefit reveal"><strong>Más orden</strong><p>Cada auto, cliente y factura en un solo lugar, sin libretas ni papeles perdidos.</p></div>
+          <div class="benefit reveal"><strong>Menos llamadas</strong><p>El cliente recibe avisos y puede ver el estado de su auto sin llamar.</p></div>
+          <div class="benefit reveal"><strong>Cero discusiones</strong><p>Presupuestos aprobados y garantías registradas con fecha y firma digital.</p></div>
+          <div class="benefit reveal"><strong>Clientes que vuelven</strong><p>Recordatorios de mantenimiento que traen al cliente de regreso.</p></div>
+          <div class="benefit reveal"><strong>Imagen profesional</strong><p>Facturas y certificados con el logo del taller.</p></div>
+          <div class="benefit reveal"><strong>Decisiones con números</strong><p>Saber qué servicios dejan más y cuánto se vende cada mes.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 06 Plan de trabajo ===== -->
+    <section id="plan">
+      <div class="wrap">
+        <div class="sec-head reveal"><span class="sec-num">06</span><h2>Plan de trabajo</h2></div>
+        <p class="lead reveal">Entrega por etapas para que el taller empiece a usar el sistema lo antes posible.</p>
+        <div class="table-scroll reveal">
+          <table class="table">
+            <thead><tr><th scope="col">Etapa</th><th scope="col">Qué se entrega</th><th scope="col">Tiempo</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">1. Levantamiento</th><td>Reunión con el taller: servicios, precios, impuestos, garantías y usuarios.</td><td>Semana 1</td></tr>
+              <tr><th scope="row">2. Base del sistema</th><td>Clientes, vehículos, órdenes de servicio y tablero del taller.</td><td>Semanas 1–2</td></tr>
+              <tr><th scope="row">3. Facturación y garantías</th><td>Presupuestos, facturas en PDF, pagos y certificados de garantía.</td><td>Semanas 2–3</td></tr>
+              <tr><th scope="row">4. Automatización</th><td>Avisos por WhatsApp, recordatorios, seguimiento del cliente y reportes.</td><td>Semana 3</td></tr>
+              <tr><th scope="row">5. Marketing</th><td>Diseños para redes y, si se necesita, conexión con Facebook Ads.</td><td>Semana 4</td></tr>
+              <tr><th scope="row">6. Entrega y capacitación</th><td>Carga de datos iniciales, capacitación del equipo y ajustes finales.</td><td>Semana 4</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 07 Inversión ===== -->
+    <section id="inversion">
+      <div class="wrap">
+        <div class="sec-head reveal"><span class="sec-num">07</span><h2>Inversión</h2></div>
+        <div class="invest">
+          <div class="price-card reveal">
+            <span>Sistema completo · pago único</span>
+            <div class="price"><small>$</small>570</div>
+            <p>USD · Todo lo descrito en esta propuesta</p>
+            <ul>
+              <li>Los 12 módulos del sistema</li>
+              <li>Diseño con la imagen de Casanova Car Care</li>
+              <li>10 diseños nuevos para redes</li>
+              <li>Conexión con Facebook Ads si se necesita</li>
+              <li>Capacitación del equipo</li>
+              <li>30 días de ajustes después de la entrega</li>
+            </ul>
+          </div>
+          <div class="terms reveal">
+            <h3>Forma de pago</h3>
+            <ul>
+              <li>50% ($285) al aprobar la propuesta</li>
+              <li>50% ($285) al entregar el sistema</li>
+            </ul>
+            <h3>No incluye</h3>
+            <ul>
+              <li>Presupuesto de anuncios pagado a Meta (Facebook / Instagram)</li>
+              <li>Hosting, mantenimiento y soporte mensual: según el plan acordado</li>
+              <li>Servicios de terceros que el taller decida contratar (procesador de pagos, mensajería automática, etc.)</li>
+              <li>Funciones nuevas fuera de esta propuesta: se cotizan aparte</li>
+            </ul>
+            <h3>Vigencia</h3>
+            <ul>
+              <li>Esta propuesta es válida por 15 días a partir de la fecha.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 08 Aceptación ===== -->
+    <section id="aceptacion">
+      <div class="wrap">
+        <div class="sec-head reveal"><span class="sec-num">08</span><h2>Aceptación</h2></div>
+        <p class="lead reveal">Al firmar, el cliente aprueba el alcance, la inversión y la forma de pago descritos en esta propuesta.</p>
+        <div class="accept reveal">
+          <div class="sign-box">
+            <h3>Cliente</h3>
+            <p>Casanova Car Care LLC</p>
+            <div class="line"></div><div class="line-label">Nombre</div>
+            <div class="line"></div><div class="line-label">Firma</div>
+            <div class="line"></div><div class="line-label">Fecha</div>
+          </div>
+          <div class="sign-box">
+            <h3>Desarrollo</h3>
+            <p>DGP Global Group &amp; AVA Multiservices</p>
+            <div class="line"></div><div class="line-label">Nombre</div>
+            <div class="line"></div><div class="line-label">Firma</div>
+            <div class="line"></div><div class="line-label">Fecha</div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="sign">
+    <div class="wrap reveal">
+      <img src="../assets/logo-sm.webp" alt="" width="160" height="166">
+      <h2><span class="chrome">Llevemos tu taller al siguiente nivel</span></h2>
+      <p>Casanova Car Care LLC · casanovacarcare.com</p>
+      <p class="credits">Propuesta preparada por
+        <a href="https://dgpglobalgroup.com" target="_blank" rel="noopener">DGP Global Group</a>
+        &amp; <a href="https://avamultiservices.com/" target="_blank" rel="noopener">AVA Multiservices</a>
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    // Contadores de tiempo en taller de la vista previa (datos de ejemplo)
+    const start = Date.now();
+    const timers = [...document.querySelectorAll(".timer")];
+    function fmt(ms) {
+      const t = Math.floor(ms / 1000);
+      const d = Math.floor(t / 86400), h = Math.floor(t % 86400 / 3600), m = Math.floor(t % 3600 / 60), s = t % 60;
+      const pad = (n) => String(n).padStart(2, "0");
+      return (d ? d + " d " : "") + pad(h) + ":" + pad(m) + ":" + pad(s);
+    }
+    function tick() {
+      timers.forEach((el) => {
+        const ms = Number(el.dataset.hours) * 3600000 + (Date.now() - start);
+        el.textContent = "⏱ " + fmt(ms);
+        el.classList.toggle("late", ms > 48 * 3600000);
+      });
+    }
+    tick(); setInterval(tick, 1000);
+
+    // Apariciones al hacer scroll
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add("is-visible"); io.unobserve(e.target); } });
+    }, { threshold: 0.08 });
+    document.querySelectorAll(".reveal").forEach((el) => io.observe(el));
+
+    // Resalta la sección actual en el índice
+    const links = [...document.querySelectorAll(".toc a")];
+    const spy = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (!e.isIntersecting) return;
+        links.forEach((l) => l.classList.toggle("is-active", l.getAttribute("href") === "#" + e.target.id));
+      });
+    }, { rootMargin: "-40% 0px -55% 0px" });
+    document.querySelectorAll("main section[id]").forEach((s) => spy.observe(s));
+
+    window.addEventListener("beforeprint", () => document.querySelectorAll(".reveal").forEach((el) => el.classList.add("is-visible")));
+  </script>
+</body>
+</html>
