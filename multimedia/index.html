@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Multimedia | Casanova Car Care LLC</title>
+  <meta name="description" content="Posts y flyers para redes sociales de Casanova Car Care LLC.">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#07080a">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Casanova Car Care LLC">
+  <meta property="og:locale" content="es_US">
+  <meta property="og:url" content="https://casanovacarcare.com/multimedia/">
+  <meta property="og:title" content="Multimedia | Casanova Car Care LLC">
+  <meta property="og:description" content="Posts y flyers listos para publicar en Instagram.">
+  <meta property="og:image" content="https://casanovacarcare.com/assets/og-image.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Multimedia | Casanova Car Care LLC">
+  <meta name="twitter:description" content="Posts y flyers listos para publicar en Instagram.">
+  <meta name="twitter:image" content="https://casanovacarcare.com/assets/og-image.jpg">
+  <link rel="icon" type="image/png" href="../assets/favicon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --red: #e10600;
+      --red-hi: #ff2a2a;
+      --bg: #07080a;
+      --surface: #131418;
+      --surface-2: #1a1b20;
+      --border: #23252b;
+      --text: #ececee;
+      --muted: #9a9ca3;
+      --green: #2ecc71;
+      --chrome: linear-gradient(180deg, #fff 0%, #e4e6ea 40%, #9298a2 52%, #d7dade 70%, #fff 100%);
+      --red-grad: linear-gradient(135deg, var(--red-hi), var(--red) 50%, #a30000);
+      --ease: cubic-bezier(.22, 1, .36, 1);
+      --font-head: "Barlow Condensed", "Arial Narrow", sans-serif;
+      --font-body: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; overflow-x: clip; }
+    body { font-family: var(--font-body); background: var(--bg); color: var(--text); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+    img, svg { display: block; }
+    h1, h2, h3 { font-family: var(--font-head); text-transform: uppercase; letter-spacing: .5px; line-height: 1.05; }
+    .wrap { max-width: 1180px; margin: 0 auto; padding: 0 20px; }
+    .chrome { background: var(--chrome); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+    .accent { color: var(--red-hi); }
+
+    /* Portada */
+    .cover { position: relative; padding: 64px 0 56px; background: radial-gradient(ellipse 70% 90% at 85% 10%, #1d0405, transparent 60%), var(--bg); border-bottom: 1px solid var(--border); }
+    .cover::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 1px; background: linear-gradient(90deg, transparent, var(--red-hi), transparent); }
+    .cover-grid { display: grid; grid-template-columns: 1fr auto; gap: 40px; align-items: center; }
+    .cover-logo { width: 150px; height: auto; filter: drop-shadow(0 20px 40px rgba(225, 6, 0, .35)); }
+    .tag { display: inline-flex; padding: 6px 14px; border-radius: 999px; border: 1px solid rgba(255, 42, 42, .35); background: rgba(225, 6, 0, .1); color: var(--red-hi); font-size: .78rem; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 18px; }
+    .cover h1 { font-size: clamp(2.6rem, 7vw, 4.4rem); font-weight: 800; margin-bottom: 14px; }
+    .cover p { color: var(--muted); max-width: 620px; }
+    .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 12px 22px; border-radius: 999px; font: 600 .9rem var(--font-body); color: #fff; text-decoration: none; border: 2px solid transparent; cursor: pointer; background: none; transition: transform .3s var(--ease), box-shadow .3s, background .3s, border-color .3s; }
+    .btn svg { width: 17px; height: 17px; flex: none; }
+    .btn-primary { background: var(--red-grad); box-shadow: 0 10px 28px -10px var(--red-hi); }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 14px 34px -10px var(--red-hi); }
+    .btn-ghost { background: rgba(255, 255, 255, .03); border-color: rgba(255, 255, 255, .2); }
+    .btn-ghost:hover { border-color: var(--red-hi); }
+    .btn.is-done { border-color: var(--green); color: var(--green); }
+
+    /* Consejos */
+    .tips { padding: 40px 0 8px; }
+    .tips ul { list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px; }
+    .tips li { display: flex; gap: 12px; padding: 16px 18px; border-radius: 14px; background: var(--surface); border: 1px solid var(--border); font-size: .9rem; color: #cfd1d6; }
+    .tips b { flex: none; width: 28px; height: 28px; border-radius: 50%; display: grid; place-items: center; background: var(--red-grad); color: #fff; font: 800 1rem var(--font-head); }
+
+    /* Galería */
+    .gallery { padding: 40px 0 72px; display: grid; grid-template-columns: repeat(auto-fill, minmax(330px, 1fr)); gap: 24px; }
+    .post { display: flex; flex-direction: column; border-radius: 20px; overflow: hidden; background: linear-gradient(180deg, var(--surface-2), var(--surface)); border: 1px solid var(--border); transition: border-color .4s, transform .4s var(--ease), box-shadow .4s; }
+    .post:hover { border-color: rgba(255, 42, 42, .4); transform: translateY(-4px); box-shadow: 0 30px 60px -30px rgba(225, 6, 0, .45); }
+    .post-img { display: block; aspect-ratio: 4 / 5; overflow: hidden; background: #000; }
+    .post-img img { width: 100%; height: 100%; object-fit: cover; transition: transform .8s var(--ease); }
+    .post:hover .post-img img { transform: scale(1.03); }
+    .post-body { display: flex; flex-direction: column; gap: 14px; padding: 20px; flex: 1; }
+    .post-head { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; }
+    .post h2 { font-size: 1.5rem; }
+    .post-num { font: 800 1rem var(--font-head); color: var(--red-hi); letter-spacing: 2px; }
+    .caption { position: relative; font-size: .86rem; color: #c9cbd0; white-space: pre-line; background: rgba(0, 0, 0, .35); border: 1px solid var(--border); border-radius: 12px; padding: 14px 16px; max-height: 150px; overflow: hidden; }
+    .caption::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 48px; background: linear-gradient(transparent, #0f1013); pointer-events: none; transition: opacity .3s; }
+    .caption.is-open { max-height: none; }
+    .caption.is-open::after { opacity: 0; }
+    .more { align-self: flex-start; background: none; border: 0; color: var(--red-hi); font: 600 .82rem var(--font-body); cursor: pointer; padding: 0; }
+    .post-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: auto; }
+    .post-actions .btn { padding: 11px 14px; font-size: .85rem; }
+
+    /* Visor */
+    .viewer { position: fixed; inset: 0; z-index: 50; display: grid; place-items: center; padding: 20px; background: rgba(0, 0, 0, .9); backdrop-filter: blur(6px); opacity: 0; visibility: hidden; transition: opacity .3s, visibility .3s; }
+    .viewer.is-open { opacity: 1; visibility: visible; }
+    .viewer img { max-width: 100%; max-height: 92vh; border-radius: 14px; box-shadow: 0 40px 80px rgba(0, 0, 0, .8); }
+    .viewer button { position: absolute; top: 18px; right: 18px; width: 46px; height: 46px; border-radius: 50%; border: 1px solid rgba(255, 255, 255, .25); background: rgba(0, 0, 0, .5); color: #fff; font-size: 1.6rem; line-height: 1; cursor: pointer; }
+
+    .toast { position: fixed; left: 50%; bottom: 24px; z-index: 60; transform: translate(-50%, 30px); opacity: 0; padding: 12px 22px; border-radius: 999px; background: var(--green); color: #05140b; font-weight: 600; font-size: .9rem; transition: opacity .3s, transform .3s var(--ease); pointer-events: none; }
+    .toast.is-visible { opacity: 1; transform: translate(-50%, 0); }
+
+    .sign { padding: 48px 0 64px; text-align: center; border-top: 1px solid var(--border); color: var(--muted); font-size: .88rem; }
+    .sign a { color: #fff; font-weight: 600; text-decoration: none; border-bottom: 1px solid var(--red-hi); }
+
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity .8s var(--ease), transform .8s var(--ease); }
+    .reveal.is-visible { opacity: 1; transform: none; }
+
+    @media (max-width: 700px) {
+      .cover { padding: 44px 0; }
+      .cover-grid { grid-template-columns: 1fr; text-align: center; }
+      .cover-logo { width: 120px; margin: 0 auto; order: -1; }
+      .cover p { margin: 0 auto; }
+      .actions { justify-content: center; }
+      .gallery { grid-template-columns: 1fr; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation: none !important; transition: none !important; }
+      .reveal { opacity: 1; transform: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+      <symbol id="i-down" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M12 4v11M7 10l5 5 5-5M5 20h14"/></symbol>
+      <symbol id="i-copy" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h3"/></g></symbol>
+    </defs>
+  </svg>
+
+  <header class="cover">
+    <div class="wrap cover-grid">
+      <div>
+        <span class="tag">Contenido para redes</span>
+        <h1><span class="chrome">Multimedia</span><br><span class="accent">Casanova Car Care</span></h1>
+        <p>Posts listos para publicar en Instagram y Facebook sobre los servicios del taller. Cada uno incluye la imagen en formato vertical 1080×1350 y su texto con hashtags.</p>
+        <div class="actions">
+          <a class="btn btn-primary" href="casanova-posts-instagram.zip" download><svg><use href="#i-down"/></svg> Descargar todos (.zip)</a>
+        </div>
+      </div>
+      <img class="cover-logo" src="../assets/logo.webp" alt="Logo de Casanova Car Care LLC" width="720" height="746">
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="tips reveal" aria-label="Cómo publicar">
+      <ul>
+        <li><b>1</b><span>Descarga la imagen del post que quieras publicar.</span></li>
+        <li><b>2</b><span>Copia el texto con el botón "Copiar texto".</span></li>
+        <li><b>3</b><span>En Instagram crea una publicación, elige la imagen y pega el texto.</span></li>
+      </ul>
+    </section>
+
+    <section class="gallery" id="gallery" aria-label="Posts"></section>
+  </main>
+
+  <footer class="sign">
+    <p>Diseño y desarrollo por
+      <a href="https://dgpglobalgroup.com" target="_blank" rel="noopener">DGP Global Group</a>
+      &amp; <a href="https://avamultiservices.com/" target="_blank" rel="noopener">AVA Multiservices</a>
+    </p>
+  </footer>
+
+  <div class="viewer" id="viewer" role="dialog" aria-modal="true" aria-label="Vista ampliada">
+    <button type="button" aria-label="Cerrar">&times;</button>
+    <img src="posts/01-mecanica-general.jpg" alt="" loading="lazy">
+  </div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script>
+    const TAGS = "#CasanovaCarCare #IrvingTX #TallerMecanico #MecanicoEnIrving #DFW #DallasTX #AutoRepair #MecanicaAutomotriz";
+    const CONTACT = "📍 1817 W Pioneer Dr. #1066, Irving, TX 75061\n📞 (913) 967-2528 · también por WhatsApp\n🌐 casanovacarcare.com";
+
+    const POSTS = [
+      { file: "01-mecanica-general", title: "Mecánica general",
+        text: "🔧 Tu motor en manos expertas.\n\nEn Casanova Car Care hacemos mantenimiento preventivo y correctivo para que tu auto rinda al máximo:\n✅ Afinación de motor\n✅ Suspensión y dirección\n✅ Transmisión y embrague\n✅ Cambio de aceite y filtros\n\nAgenda tu cita hoy 👇", extra: "#MecanicaGeneral #Afinacion" },
+      { file: "02-aire-acondicionado", title: "Refrigeración A/C",
+        text: "❄️ ¿Tu A/C no enfría?\n\nQue el calor de Texas no te alcance. Revisamos y reparamos el aire acondicionado de tu auto:\n✅ Recarga de gas A/C\n✅ Compresores y condensadores\n✅ Detección de fugas\n✅ Radiadores y mangueras\n\nEscríbenos y agenda tu revisión 👇", extra: "#AireAcondicionado #ACRepair" },
+      { file: "03-frenos", title: "Frenos",
+        text: "🛑 Frenar bien no es opcional.\n\n¿Rechinan tus frenos o el pedal se siente diferente? No lo dejes para después. Revisamos y reparamos todo el sistema de frenado:\n✅ Pastillas y balatas\n✅ Rectificado de discos\n✅ Líquido de frenos\n✅ Sistema ABS\n\nTu seguridad es primero 👇", extra: "#Frenos #BrakeRepair" },
+      { file: "04-electricidad", title: "Electricidad",
+        text: "⚡ ¿Tu auto no arranca?\n\nPuede ser la batería, el alternador o el motor de arranque. Diagnosticamos y reparamos todo el sistema eléctrico de tu vehículo:\n✅ Baterías\n✅ Alternadores\n✅ Motor de arranque\n✅ Luces y cableado\n\nLlámanos o escríbenos 👇", extra: "#ElectricidadAutomotriz #Bateria" },
+      { file: "05-diagnostico", title: "Diagnóstico computarizado",
+        text: "🚨 ¿Se encendió el Check Engine?\n\nNo adivinamos: conectamos tu auto al escáner y encontramos la falla real antes de reparar. Te explicamos el problema y apruebas el presupuesto antes de empezar.\n\nAgenda tu diagnóstico 👇", extra: "#CheckEngine #DiagnosticoAutomotriz" },
+      { file: "06-cambio-de-aceite", title: "Cambio de aceite",
+        text: "🛢️ Cambio de aceite y filtros.\n\nEl mantenimiento más simple que alarga la vida de tu motor. Incluye revisión de niveles e inspección general de tu vehículo.\n\n¿Ya te toca? Agenda tu cita 👇", extra: "#CambioDeAceite #OilChange" },
+      { file: "07-agenda-tu-cita", title: "Tu taller de confianza",
+        text: "🏁 Tu taller de confianza en Irving, TX.\n\nMecánica general · Refrigeración · Frenos · Electricidad.\nDiagnóstico preciso, presupuesto antes de reparar y atención personalizada.\n\nVisítanos 👇", extra: "#TallerDeConfianza" },
+      { file: "08-como-trabajamos", title: "Cómo trabajamos",
+        text: "📋 Así trabajamos en Casanova Car Care:\n\n1️⃣ Agenda: llámanos o escríbenos por WhatsApp.\n2️⃣ Diagnóstico: encontramos el problema real.\n3️⃣ Presupuesto: apruebas antes de empezar.\n4️⃣ Entrega: tu auto listo y probado.\n\nSimple y transparente 👇", extra: "#ServicioTransparente" },
+    ];
+
+    const gallery = document.getElementById("gallery");
+    const toast = document.getElementById("toast");
+    const fullText = (p) => `${p.text}\n\n${CONTACT}\n\n${TAGS} ${p.extra}`;
+
+    POSTS.forEach((p, i) => {
+      const src = `posts/${p.file}.jpg`;
+      const el = document.createElement("article");
+      el.className = "post reveal";
+      el.innerHTML = `
+        <a class="post-img" href="${src}" data-view="${src}" aria-label="Ver ${p.title} en grande">
+          <img src="${src}" alt="Flyer de ${p.title} de Casanova Car Care" width="1080" height="1350" loading="${i < 3 ? "eager" : "lazy"}">
+        </a>
+        <div class="post-body">
+          <div class="post-head"><h2>${p.title}</h2><span class="post-num">${String(i + 1).padStart(2, "0")}</span></div>
+          <div class="caption"></div>
+          <button type="button" class="more">Ver texto completo</button>
+          <div class="post-actions">
+            <a class="btn btn-primary" href="${src}" download="casanova-${p.file}.jpg"><svg><use href="#i-down"/></svg> Descargar</a>
+            <button type="button" class="btn btn-ghost copy"><svg><use href="#i-copy"/></svg> Copiar texto</button>
+          </div>
+        </div>`;
+      const caption = el.querySelector(".caption");
+      caption.textContent = fullText(p);
+      el.querySelector(".more").addEventListener("click", (e) => {
+        const open = caption.classList.toggle("is-open");
+        e.currentTarget.textContent = open ? "Ver menos" : "Ver texto completo";
+      });
+      el.querySelector(".copy").addEventListener("click", (e) => copy(fullText(p), e.currentTarget));
+      gallery.appendChild(el);
+    });
+
+    async function copy(text, btn) {
+      try {
+        await navigator.clipboard.writeText(text);
+      } catch {
+        const t = document.createElement("textarea");
+        t.value = text; document.body.appendChild(t); t.select();
+        document.execCommand("copy"); t.remove();
+      }
+      btn.classList.add("is-done");
+      btn.lastChild.textContent = " ¡Copiado!";
+      showToast("Texto copiado. Pégalo en tu publicación.");
+      setTimeout(() => { btn.classList.remove("is-done"); btn.lastChild.textContent = " Copiar texto"; }, 2200);
+    }
+
+    let toastTimer;
+    function showToast(msg) {
+      toast.textContent = msg;
+      toast.classList.add("is-visible");
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => toast.classList.remove("is-visible"), 2400);
+    }
+
+    // Visor de imagen ampliada
+    const viewer = document.getElementById("viewer");
+    const viewerImg = viewer.querySelector("img");
+    gallery.addEventListener("click", (e) => {
+      const a = e.target.closest("[data-view]");
+      if (!a) return;
+      e.preventDefault();
+      viewerImg.src = a.dataset.view;
+      viewerImg.alt = a.querySelector("img").alt;
+      viewer.classList.add("is-open");
+      viewer.querySelector("button").focus();
+    });
+    const closeViewer = () => viewer.classList.remove("is-open");
+    viewer.addEventListener("click", (e) => { if (e.target !== viewerImg) closeViewer(); });
+    document.addEventListener("keydown", (e) => e.key === "Escape" && closeViewer());
+
+    // Apariciones al hacer scroll
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((en) => { if (en.isIntersecting) { en.target.classList.add("is-visible"); io.unobserve(en.target); } });
+    }, { threshold: 0.08 });
+    document.querySelectorAll(".reveal").forEach((el) => io.observe(el));
+  </script>
+</body>
+</html>
